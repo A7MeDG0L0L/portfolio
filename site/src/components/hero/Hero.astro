@@ -18,7 +18,11 @@ const p = await getProfile(locale);
       <a class="btn ghost" href={waLink(p.whatsapp, p.waMessage)} target="_blank" rel="noopener">{p.ctaBuild} <small>{p.ctaBuildHint}</small></a>
     </div>
     <p class="trust">{t(locale, 'shippedFor')}</p>
-    <ul class="logos">{p.wordmarks.map((w) => <li>{w}</li>)}</ul>
+    <ul class="logos" data-testid="logos">
+      {p.logos.map((l) => (
+        <li><img src={l.src} alt={l.name} height="26" loading="lazy" decoding="async" />{l.showName && <span aria-hidden="true">{l.name}</span>}</li>
+      ))}
+    </ul>
   </div>
   <Phone locale={locale} />
 </section>
@@ -36,6 +40,10 @@ const p = await getProfile(locale);
   .btn.ghost { border: 1px solid var(--line); background: var(--panel); }
   .btn small { font-weight: 400; opacity: .65; font-size: 12px; }
   .trust { margin: 34px 0 0; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; }
-  .logos { display: flex; gap: 22px; margin: 12px 0 0; padding: 0; list-style: none; flex-wrap: wrap; font-weight: 700; font-size: 17px; opacity: .8; }
+  .logos { display: flex; gap: 26px; margin: 14px 0 0; padding: 0; list-style: none; flex-wrap: wrap; align-items: center; }
+  .logos li { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 17px; }
+  .logos img { height: 26px; width: auto; filter: grayscale(1) brightness(0) invert(1); opacity: .8; }
+  .logos span { opacity: .8; }
+  :global([data-theme="light"]) .logos img { filter: grayscale(1) brightness(0); opacity: .75; }
   @media (max-width: 899px) { .hero { grid-template-columns: 1fr; padding-block: 32px; gap: 36px; } }
 </style>

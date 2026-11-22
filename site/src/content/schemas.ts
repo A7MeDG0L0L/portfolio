@@ -21,7 +21,7 @@ export const profileSchema = z.object({
   ctaBuildHint: z.string(),
   waMessage: z.string(),
   focusLine: z.string(),
-  wordmarks: z.array(z.string()),
+  logos: z.array(z.object({ name: z.string(), src: z.string().startsWith('/logos/'), showName: z.boolean().default(false) })),
   stats: z.array(z.object({ value: z.string(), label: z.string() })),
   quickLook: z.object({
     nowLabel: z.string(),
@@ -45,7 +45,7 @@ export const projectSchema = z.object({
   company: z.string().optional(),
   dates: z.string().optional(),
   order: z.number().int(),
-  icon: z.object({ label: z.string(), bg: z.string(), fg: z.string().optional() }),
+  icon: z.object({ label: z.string(), bg: z.string(), fg: z.string().optional(), image: z.string().startsWith('/icons/').optional() }),
   summary: z.string(),
   problem: z.string().optional(),
   highlights: z.array(z.string()).min(1),

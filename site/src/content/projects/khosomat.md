@@ -6,7 +6,7 @@ type: app
 company: Khosomat.com
 dates: 2021 – 2022
 order: 3
-icon: { label: "K", bg: "#ff8a00" }
+icon: { label: "K", bg: "#ff8a00", image: "/icons/khosomat.png" }
 summary: E-commerce app built from scratch on the WooCommerce API.
 problem: Build a complete e-commerce app from scratch on the WooCommerce API.
 highlights:

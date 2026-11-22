@@ -8,7 +8,9 @@ const shot = screenshots[0];
 <div class:list={['cover', size]} style={`--cover-bg:${icon.bg};--cover-fg:${icon.fg ?? '#fff'}`}>
   {shot
     ? <img src={shot.src} alt={shot.alt} loading="lazy" decoding="async" />
-    : <span class="label" aria-hidden="true">{icon.label}</span>}
+    : icon.image
+      ? <img class="appicon" src={icon.image} alt="" width="96" height="96" loading="lazy" decoding="async" />
+      : <span class="label" aria-hidden="true">{icon.label}</span>}
   {!shot && <span class="sr-only">{title}</span>}
 </div>
 <style>
@@ -19,4 +21,6 @@ const shot = screenshots[0];
   .label { font-weight: 800; font-size: 44px; letter-spacing: -.02em; z-index: 1; }
   .hero .label { font-size: 72px; }
   img { width: 100%; height: 100%; object-fit: cover; }
+  .appicon { width: 96px; height: 96px; border-radius: 24px; z-index: 1; box-shadow: 0 14px 40px rgba(0,0,0,.4); }
+  .hero .appicon { width: 128px; height: 128px; border-radius: 30px; }
 </style>

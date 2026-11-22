@@ -17,7 +17,12 @@
   "ctaBuildHint": "واتساب",
   "waMessage": "مرحبًا أحمد، أريد بناء تطبيق",
   "focusLine": "Flutter · Kotlin · Compose",
-  "wordmarks": ["aramex", "bluworks", "Tecfy", "Khosomat"],
+  "logos": [
+    { "name": "Aramex", "src": "/logos/aramex.svg" },
+    { "name": "Bluworks", "src": "/logos/bluworks.png" },
+    { "name": "Tecfy", "src": "/logos/tecfy.png", "showName": true },
+    { "name": "Khosomat", "src": "/logos/khosomat.svg" }
+  ],
   "stats": [
     { "value": "5 سنوات", "label": "Flutter + Android Native" },
     { "value": "AR / EN", "label": "واجهات ثنائية اللغة تدعم الاتجاه من اليمين لليسار" },

@@ -15,7 +15,7 @@ test('toggle keeps page', async ({ page }) => {
   expect(new URL(page.url()).pathname).toBe('/work/khosomat/');
 });
 
-const slugs = ['shop-and-ship', 'bluworks-tablet', 'khosomat', 'nasa-daily', 'made-me-laugh', 'simple-file-manager', 'flutter-pdf-designer'];
+const slugs = ['shop-and-ship', 'bluworks-tablet', 'khosomat', 'convertify', 'xo-clash', 'daily-tips', 'nasa-daily', 'made-me-laugh', 'simple-file-manager', 'flutter-pdf-designer'];
 for (const p of ['/', '/ar/', ...slugs.flatMap((s) => [`/work/${s}/`, `/ar/work/${s}/`])]) {
   test(`no horizontal scroll at 360px: ${p}`, async ({ page }) => {
     await page.setViewportSize({ width: 360, height: 780 });

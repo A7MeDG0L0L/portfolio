@@ -54,11 +54,14 @@ describe('English content', () => {
     expect(experience.roles.find((r) => r.company === 'The Sparks Foundation')?.inTimeline).toBe(false);
   });
 
-  it('8 projects with the right types', () => {
+  it('11 projects with the right types', () => {
     expect(projects.map((p) => p.slug)).toEqual([
       'shop-and-ship',
       'bluworks-tablet',
       'khosomat',
+      'convertify',
+      'xo-clash',
+      'daily-tips',
       'nasa-daily',
       'made-me-laugh',
       'simple-file-manager',
@@ -69,7 +72,7 @@ describe('English content', () => {
     expect(types['simple-file-manager']).toBe('package');
     expect(types['flutter-pdf-designer']).toBe('package');
     expect(types['ai-dev']).toBe('approach');
-    expect(projects.filter((p) => p.type === 'app')).toHaveLength(5);
+    expect(projects.filter((p) => p.type === 'app')).toHaveLength(8);
     expect(projects.every((p) => p.locale === 'en')).toBe(true);
   });
 
@@ -127,5 +130,19 @@ describe('copy stays within the CV', () => {
   });
   it('keeps the Khosomat brand untranslated in Arabic', () => {
     expect(fs.readFileSync(path.join(root, 'experience/ar.json'), 'utf8')).not.toMatch(/تطبيق خصومات/);
+  });
+});
+
+describe('artwork', () => {
+  const pub = path.resolve(__dirname, '../../public');
+  it('every project icon image and company logo exists in public/', () => {
+    const imgs = [...projects.map((p) => p.icon.image).filter(Boolean), ...profile.logos.map((l) => l.src)] as string[];
+    expect(imgs.length).toBeGreaterThanOrEqual(12);
+    for (const src of imgs) expect(fs.existsSync(path.join(pub, src)), src).toBe(true);
+  });
+  it('published apps use their real store icon', () => {
+    for (const slug of ['shop-and-ship', 'bluworks-tablet', 'khosomat', 'convertify', 'xo-clash', 'daily-tips', 'nasa-daily', 'made-me-laugh']) {
+      expect(projects.find((p) => p.slug === slug)?.icon.image, slug).toBe(`/icons/${slug}.png`);
+    }
   });
 });

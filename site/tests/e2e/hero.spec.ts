@@ -13,9 +13,9 @@ test('hero shows headline and both CTAs', async ({ page }) => {
   expect(await build.getAttribute('href')).toMatch(/^https:\/\/wa\.me\/201119369127/);
 });
 
-test('8 app icons', async ({ page }) => {
+test('11 app icons', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByTestId('hero').getByTestId('app-icon')).toHaveCount(8);
+  await expect(page.getByTestId('hero').getByTestId('app-icon')).toHaveCount(11);
 });
 
 test('click opens sheet in phone, back closes', async ({ page }, info) => {
@@ -90,5 +90,19 @@ test('phone frame is hidden on a real phone (icons only)', async ({ page }, info
   await page.goto('/');
   const box = await page.getByTestId('hero').locator('.phone').boundingBox();
   expect(box?.height).not.toBe(630);
-  await expect(page.getByTestId('hero').getByTestId('app-icon')).toHaveCount(8);
+  await expect(page.getByTestId('hero').getByTestId('app-icon')).toHaveCount(11);
+});
+
+test('app icons show real artwork', async ({ page }) => {
+  await page.goto('/');
+  const img = page.getByTestId('hero').getByTestId('app-icon').filter({ hasText: 'Shop&Ship' }).locator('img');
+  await expect(img).toHaveAttribute('src', '/icons/shop-and-ship.png');
+  expect(await img.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth > 0)).toBe(true);
+});
+
+test('company logos render in the hero', async ({ page }) => {
+  await page.goto('/');
+  const logos = page.getByTestId('logos').locator('img');
+  await expect(logos).toHaveCount(4);
+  expect(await logos.evaluateAll((els) => els.map((e) => e.getAttribute('alt')))).toEqual(['Aramex', 'Bluworks', 'Tecfy', 'Khosomat']);
 });

@@ -9,12 +9,16 @@ const { slug, icon } = project.data;
 const href = hasCaseStudyPage(project) ? localizePath(`/work/${slug}/`, locale) : '#quick-look';
 ---
 <a class="app" href={href} data-sheet={slug} data-testid="app-icon" aria-haspopup="dialog" aria-controls={`sheet-${slug}`}>
-  <span class="ic" style={`background:${icon.bg};color:${icon.fg ?? '#fff'}`} aria-hidden="true">{icon.label}</span>
+  {icon.image
+    ? <span class="ic art" aria-hidden="true"><img src={icon.image} alt="" width="56" height="56" decoding="async" /></span>
+    : <span class="ic" style={`background:${icon.bg};color:${icon.fg ?? '#fff'}`} aria-hidden="true">{icon.label}</span>}
   <span class="lbl">{short}</span>
 </a>
 <style>
   .app { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 10.5px; color: #e6e9f2; text-align: center; }
   .ic { width: 56px; height: 56px; border-radius: 15px; display: grid; place-items: center; font-weight: 800; font-size: 19px; box-shadow: 0 6px 16px rgba(0,0,0,.35); transition: transform .15s; }
+  .art { overflow: hidden; background: #fff; }
+  .art img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .app:hover .ic, .app:focus-visible .ic { transform: scale(1.08); }
   .lbl { max-width: 64px; line-height: 1.2; }
   @media (max-width: 599px) { .app { color: var(--text); font-size: 12px; } .lbl { max-width: 76px; } }

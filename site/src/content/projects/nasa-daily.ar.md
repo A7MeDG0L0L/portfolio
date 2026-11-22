@@ -4,8 +4,8 @@ short: "ناسا"
 slug: nasa-daily
 type: app
 dates: مشروع جانبي
-order: 4
-icon: { label: "✦", bg: "#0b3d91" }
+order: 7
+icon: { label: "✦", bg: "#0b3d91", image: "/icons/nasa-daily.png" }
 summary: يعرض صور ناسا اليومية للفضاء ويحفظها.
 highlights:
   - يجلب صور ناسا اليومية للفضاء باستخدام Dio

@@ -4,8 +4,8 @@ short: "Laugh"
 slug: made-me-laugh
 type: app
 dates: Side project
-order: 5
-icon: { label: "ha", bg: "#ffd23f", fg: "#222222" }
+order: 8
+icon: { label: "ha", bg: "#ffd23f", fg: "#222222", image: "/icons/made-me-laugh.png" }
 summary: Joke-sharing app with Firestore, push notifications and audio.
 highlights:
   - Joke sharing backed by Firebase Firestore

@@ -1,11 +1,11 @@
 ---
-title: Made Me Laugh
+title: ضحكني شكراً
 short: "نكت"
 slug: made-me-laugh
 type: app
 dates: مشروع جانبي
-order: 5
-icon: { label: "ha", bg: "#ffd23f", fg: "#222222" }
+order: 8
+icon: { label: "ha", bg: "#ffd23f", fg: "#222222", image: "/icons/made-me-laugh.png" }
 summary: تطبيق لمشاركة النكت مع Firestore وإشعارات وصوت.
 highlights:
   - مشاركة النكت باستخدام Firebase Firestore

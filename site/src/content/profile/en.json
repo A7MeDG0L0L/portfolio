@@ -17,7 +17,12 @@
   "ctaBuildHint": "WhatsApp",
   "waMessage": "Hi Ahmed, I'd like to build an app",
   "focusLine": "Flutter · Kotlin · Compose",
-  "wordmarks": ["aramex", "bluworks", "Tecfy", "Khosomat"],
+  "logos": [
+    { "name": "Aramex", "src": "/logos/aramex.svg" },
+    { "name": "Bluworks", "src": "/logos/bluworks.png" },
+    { "name": "Tecfy", "src": "/logos/tecfy.png", "showName": true },
+    { "name": "Khosomat", "src": "/logos/khosomat.svg" }
+  ],
   "stats": [
     { "value": "5 yrs", "label": "Flutter + Android Native" },
     { "value": "AR / EN", "label": "Bilingual, RTL-ready UIs" },
