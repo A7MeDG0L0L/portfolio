@@ -1,0 +1,12 @@
+---
+import CaseStudy from '../../../components/casestudy/CaseStudy.astro';
+import { getProjects, hasCaseStudyPage, type Project } from '../../../lib/projects';
+
+export async function getStaticPaths() {
+  const projects = (await getProjects('ar')).filter(hasCaseStudyPage);
+  return projects.map((project) => ({ params: { slug: project.data.slug }, props: { project } }));
+}
+interface Props { project: Project }
+const { project } = Astro.props;
+---
+<CaseStudy project={project} locale="ar" />

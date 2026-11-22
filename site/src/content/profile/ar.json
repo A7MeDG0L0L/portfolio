@@ -1,0 +1,38 @@
+{
+  "name": "أحمد جلال",
+  "title": "مطوّر تطبيقات موبايل",
+  "location": "القاهرة، مصر",
+  "headline": "أبني تطبيقات موبايل",
+  "headlineAccent": "سريعة وسلسة وبإحساس أصلي.",
+  "intro": "مطوّر Flutter وAndroid بخبرة 5 سنوات في بناء تطبيقات لأرامكس وBluworks وشركات ناشئة. تطبيقات تعمل بدون إنترنت، بالعربية والإنجليزية، ومصمَّمة لتكبر.",
+  "available": true,
+  "availabilityText": "متاح لوظيفة بدوام كامل ولمشاريع فريلانس",
+  "email": "agalal819@gmail.com",
+  "whatsapp": "+201119369127",
+  "linkedin": "https://www.linkedin.com/in/a7medg0l0l/",
+  "github": "https://github.com/A7MeDG0L0L",
+  "ctaHire": "وظّفني بدوام كامل",
+  "ctaHireHint": "السيرة الذاتية",
+  "ctaBuild": "ابنِ تطبيقي",
+  "ctaBuildHint": "واتساب",
+  "waMessage": "مرحبًا أحمد، أريد بناء تطبيق",
+  "focusLine": "Flutter · Kotlin · Compose",
+  "wordmarks": ["aramex", "bluworks", "Tecfy", "Khosomat"],
+  "stats": [
+    { "value": "5 سنوات", "label": "Flutter + Android Native" },
+    { "value": "AR / EN", "label": "واجهات ثنائية اللغة تدعم الاتجاه من اليمين لليسار" },
+    { "value": "بدون إنترنت", "label": "تطبيقات تستمر في العمل بلا اتصال" }
+  ],
+  "quickLook": {
+    "nowLabel": "حاليًا · Bluworks",
+    "nowTitle": "إعادة بناء تطبيق التابلت + نظام تصميم",
+    "nowText": "حسّنت سرعة تشغيل التطبيق، وقلّلت الأعطال الحرجة، وبنيت نظام تصميم قابلًا للتوسع لواجهة متناسقة.",
+    "aiTitle": "تطوير مدعوم بالذكاء الاصطناعي",
+    "aiText": "تطوير قائم على المواصفات، وMCP، وأدوات مثل Claude وCursor وCopilot في عملي اليومي.",
+    "companiesTitle": "تبحث عن مطوّر Flutter؟",
+    "companiesText": "تحويل التطبيقات من Native إلى Flutter، وClean Architecture، وتحسين الأداء، وتعاون وثيق مع فرق المنتج والتصميم والجودة.",
+    "clientsTitle": "تريد بناء تطبيق؟",
+    "clientsText": "من الفكرة إلى المتجر: Android وiOS، بالعربية والإنجليزية. راسلني على واتساب أو بالبريد.",
+    "stack": ["Flutter", "Dart", "Kotlin", "Jetpack Compose", "BloC", "Clean Architecture", "Firebase", "HERE Maps", "SQLite"]
+  }
+}

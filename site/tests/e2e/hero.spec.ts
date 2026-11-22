@@ -43,12 +43,13 @@ test('keyboard: Enter opens, Esc closes, focus returns', async ({ page }, info) 
   await expect(icon).toBeFocused();
 });
 
-test.fixme('no-JS: icon navigates to case study', async ({ browser, baseURL }) => {
+test('no-JS: icon navigates to case study', async ({ browser, baseURL }) => {
   const ctx = await browser.newContext({ javaScriptEnabled: false, baseURL });
   const page = await ctx.newPage();
   await page.goto('/');
   await page.getByTestId('app-icon').filter({ hasText: 'Khosomat' }).click();
   await expect(page).toHaveURL(/\/work\/khosomat\/$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Khosomat');
   await ctx.close();
 });
 

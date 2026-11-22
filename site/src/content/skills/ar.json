@@ -1,0 +1,11 @@
+{
+  "groups": [
+    { "name": "لغات البرمجة", "items": ["Dart", "Kotlin", "Java", "HTML5", "CSS3"] },
+    { "name": "أطر العمل والأدوات", "items": ["Flutter", "Android SDK", "Jetpack Compose", "BloC", "GetX", "Provider", "Dio", "Firebase", "Google Maps", "HERE Maps", "Postman", "Swagger"] },
+    { "name": "قواعد البيانات", "items": ["SQLite", "Sqflite", "Firebase Firestore"] },
+    { "name": "إدارة الإصدارات", "items": ["Git", "GitHub", "Azure DevOps"] },
+    { "name": "المبادئ", "items": ["OOP", "SOLID", "Clean Architecture", "Agile", "Scrum", "Kanban"] },
+    { "name": "التصميم", "items": ["Figma", "Adobe XD"] },
+    { "name": "الذكاء الاصطناعي", "items": ["Prompt Engineering", "Spec-Driven Development", "MCP", "Claude", "Cursor", "GitHub Copilot", "ChatGPT", "Google Gemini", "Speckit"] }
+  ]
+}

@@ -91,3 +91,28 @@ describe('English content', () => {
     expect(profile.github.endsWith('/A7MeDG0L0L')).toBe(true);
   });
 });
+
+describe('Arabic content mirrors English facts', () => {
+  const arProfile = profileSchema.parse(readJson('profile/ar.json'));
+  const arExperience = experienceSchema.parse(readJson('experience/ar.json'));
+  skillsSchema.parse(readJson('skills/ar.json'));
+  certificationsSchema.parse(readJson('certifications/ar.json'));
+  const arProjects = fs
+    .readdirSync(path.join(root, 'projects'))
+    .filter((f) => f.endsWith('.ar.md'))
+    .map((f) => projectSchema.parse(matter(fs.readFileSync(path.join(root, 'projects', f), 'utf8')).data))
+    .sort((a, b) => a.order - b.order);
+
+  it('same projects, types, links and stack', () => {
+    const pick = (p: (typeof projects)[number] | (typeof arProjects)[number]) => ({ slug: p.slug, type: p.type, order: p.order, links: p.links, stack: p.stack });
+    expect(arProjects.map(pick)).toEqual(projects.map(pick));
+    expect(arProjects.every((p) => p.locale === 'ar')).toBe(true);
+  });
+  it('same contact details', () => {
+    for (const k of ['email', 'whatsapp', 'linkedin', 'github'] as const) expect(arProfile[k]).toBe(profile[k]);
+  });
+  it('same roles and dates', () => {
+    const pick = (r: { start: string; end: string | null; inTimeline: boolean; bullets: string[] }) => [r.start, r.end, r.inTimeline, r.bullets.length];
+    expect(arExperience.roles.map(pick)).toEqual(experience.roles.map(pick));
+  });
+});
