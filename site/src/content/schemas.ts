@@ -6,6 +6,7 @@ export const profileSchema = z.object({
   name: z.string(),
   title: z.string(),
   location: z.string(),
+  photo: z.string().startsWith('/photo/').optional(),
   headline: z.string(),
   headlineAccent: z.string(),
   intro: z.string(),

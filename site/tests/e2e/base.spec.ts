@@ -21,3 +21,13 @@ test('CV is served', async ({ request }) => {
   expect(res.status()).toBe(200);
   expect(res.headers()['content-type']).toContain('pdf');
 });
+
+test('monogram logo and tab icons', async ({ page, request }) => {
+  await page.goto('/');
+  const logo = page.locator('header .logo img');
+  await expect(logo).toHaveAttribute('src', '/brand/ag-monogram.png');
+  expect(await logo.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth > 0)).toBe(true);
+  await expect(page.locator('link[rel="icon"][sizes="32x32"]')).toHaveAttribute('href', '/favicon-32.png');
+  await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute('href', '/apple-touch-icon.png');
+  expect((await request.get('/favicon-32.png')).status()).toBe(200);
+});

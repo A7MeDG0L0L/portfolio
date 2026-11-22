@@ -38,6 +38,10 @@ Rules the tests enforce:
 - Arabic files must keep the same projects, links, stack, contact details and dates as English.
 - Hide the green "Open to work" pill by setting `"available": false` in both profile files.
 
+### Dev server shows old content?
+
+Delete `.astro/data-store.json` and restart `npm run dev`. The production build is not affected.
+
 ### Adding screenshots
 
 Put images in `public/work/<slug>/` and list them in the project's frontmatter:

@@ -159,3 +159,19 @@ describe('phone selection', () => {
     expect(projects.filter((p) => !p.inPhone).map((p) => p.slug)).toEqual(['aramex-freight', 'aramex-global-shopper', 'myus', 'made-me-laugh']);
   });
 });
+
+describe('profile photo', () => {
+  const pub = path.resolve(__dirname, '../../public');
+  it('profile points at a photo that exists, in both languages', () => {
+    for (const loc of ['en', 'ar']) {
+      const p = profileSchema.parse(readJson(`profile/${loc}.json`));
+      expect(p.photo, loc).toBe('/photo/ahmed.webp');
+      expect(fs.existsSync(path.join(pub, p.photo!))).toBe(true);
+    }
+  });
+  it('published photo carries no EXIF metadata (no location or device data)', () => {
+    for (const f of ['photo/ahmed.jpg', 'photo/ahmed.webp']) {
+      expect(fs.readFileSync(path.join(pub, f)).includes(Buffer.from('Exif')), f).toBe(false);
+    }
+  });
+});

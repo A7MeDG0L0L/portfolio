@@ -21,6 +21,7 @@ Astro 7.4, Tailwind CSS 4, TypeScript strict, `@astrojs/sitemap`, Fontsource (In
 - Interactive pieces are links first (work without JS); JS islands are plain TS (`phone.ts`, `tiles.ts`, theme toggle).
 - No unconfirmed numbers or claims in copy; tests enforce it.
 - Astro 7 auto-backgrounds `dev`/`preview` under AI agents; always pass `--ignore-lock` when running them from an agent.
+- If the dev server shows stale content after editing JSON/frontmatter, delete `site/.astro/data-store.json` and restart dev (the build uses its own cache and is unaffected).
 
 ## Do not touch
 - `docs/superpowers/specs/*` (CEO-approved design) without a CR.

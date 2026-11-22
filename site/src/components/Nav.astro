@@ -16,7 +16,7 @@ const links = [
 <header class="nav">
   <div class="container-x row">
     <a class="logo" href={home} aria-label="Ahmed Galal">
-      <span class="mark">AG</span><span class="name">Ahmed Galal</span>
+      <img class="mark" src="/brand/ag-monogram.png" alt="" width="34" height="34" /><span class="name">Ahmed Galal</span>
     </a>
     <nav aria-label="Main">
       <ul>{links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
@@ -33,7 +33,7 @@ const links = [
   .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); background: color-mix(in srgb, var(--bg) 72%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
   .row { display: flex; align-items: center; gap: 20px; height: 64px; }
   .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
-  .mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; color: #fff; font-size: 13px; background: linear-gradient(135deg, #54c5f8, #7c5cff); }
+  .mark { width: 34px; height: 34px; border-radius: 10px; background: #000; box-shadow: 0 0 0 1px var(--line); }
   nav { margin-inline-start: auto; }
   ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: 14px; color: var(--muted); }
   ul a:hover { color: var(--text); }

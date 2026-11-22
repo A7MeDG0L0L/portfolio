@@ -8,6 +8,7 @@ const data = {
   jobTitle: p.title,
   email: `mailto:${p.email}`,
   url: (Astro.site ?? new URL(Astro.url.origin)).href,
+  image: new URL('/photo/ahmed.jpg', Astro.site ?? new URL(Astro.url.origin)).href,
   address: { '@type': 'PostalAddress', addressLocality: 'Cairo', addressCountry: 'EG' },
   sameAs: [p.linkedin, p.github],
   knowsAbout: ['Flutter', 'Dart', 'Kotlin', 'Jetpack Compose', 'Android', 'Mobile application development'],

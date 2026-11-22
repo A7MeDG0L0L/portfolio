@@ -131,3 +131,11 @@ test('mobile: call/WhatsApp/LinkedIn/email dock stays visible on phones', async 
   const box = await call.boundingBox();
   expect(box!.width).toBeGreaterThanOrEqual(44);
 });
+
+test('hero shows the profile photo', async ({ page }) => {
+  await page.goto('/');
+  const photo = page.getByTestId('hero').getByTestId('avatar');
+  await expect(photo).toBeVisible();
+  await expect(photo).toHaveAttribute('alt', 'Ahmed Galal');
+  expect(await photo.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth > 0)).toBe(true);
+});
