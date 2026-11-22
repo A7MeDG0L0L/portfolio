@@ -18,4 +18,4 @@ stack: [Flutter, Dart, Clean Architecture, HERE Maps, Firebase, Payment gateways
 links: { play: "https://play.google.com/store/apps/details?id=net.aramex.sas&hl=en" }
 locale: ar
 ---
-Shop & Ship هو تطبيق أرامكس للتسوّق من المتاجر العالمية والشحن إلى المنطقة. عملت على نقله من Native إلى Flutter بالتعاون مع فرق المنتج والتصميم والجودة وDevOps.
+Shop & Ship هو تطبيق أرامكس للتسوّق والشحن. عملت على نقله من Native إلى Flutter بالتعاون مع فرق المنتج والتصميم والجودة وDevOps.

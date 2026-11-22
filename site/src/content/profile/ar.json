@@ -4,7 +4,7 @@
   "location": "القاهرة، مصر",
   "headline": "أبني تطبيقات موبايل",
   "headlineAccent": "سريعة وسلسة وبإحساس أصلي.",
-  "intro": "مطوّر Flutter وAndroid بخبرة 5 سنوات في بناء تطبيقات لأرامكس وBluworks وشركات ناشئة. تطبيقات تعمل بدون إنترنت، بالعربية والإنجليزية، ومصمَّمة لتكبر.",
+  "intro": "مطوّر Flutter وAndroid بخبرة 5 سنوات في بناء تطبيقات لأرامكس وBluworks وغيرهما. تطبيقات تعمل بدون إنترنت، بالعربية والإنجليزية، ومصمَّمة لتكبر.",
   "available": true,
   "availabilityText": "متاح لوظيفة بدوام كامل ولمشاريع فريلانس",
   "email": "agalal819@gmail.com",
@@ -32,7 +32,7 @@
     "companiesTitle": "تبحث عن مطوّر Flutter؟",
     "companiesText": "تحويل التطبيقات من Native إلى Flutter، وClean Architecture، وتحسين الأداء، وتعاون وثيق مع فرق المنتج والتصميم والجودة.",
     "clientsTitle": "تريد بناء تطبيق؟",
-    "clientsText": "من الفكرة إلى المتجر: Android وiOS، بالعربية والإنجليزية. راسلني على واتساب أو بالبريد.",
+    "clientsText": "من الفكرة إلى الإطلاق: تطبيقات Flutter متعددة المنصات بالعربية والإنجليزية. راسلني على واتساب أو بالبريد.",
     "stack": ["Flutter", "Dart", "Kotlin", "Jetpack Compose", "BloC", "Clean Architecture", "Firebase", "HERE Maps", "SQLite"]
   }
 }

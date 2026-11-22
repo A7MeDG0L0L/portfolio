@@ -60,3 +60,15 @@ test('mobile: sheet is full-screen', async ({ page }, info) => {
   const box = await page.locator('#sheet-khosomat').boundingBox();
   expect(box?.width).toBe(page.viewportSize()?.width);
 });
+
+test('mobile: page behind the sheet does not scroll', async ({ page }, info) => {
+  test.skip(info.project.name !== 'mobile', 'mobile layout only');
+  await page.goto('/');
+  await page.getByTestId('app-icon').filter({ hasText: 'NASA' }).click();
+  await expect(page.locator('#sheet-nasa-daily')).toBeVisible();
+  const before = await page.evaluate(() => window.scrollY);
+  await page.mouse.move(200, 400);
+  await page.mouse.wheel(0, 1200);
+  await page.waitForTimeout(300);
+  expect(await page.evaluate(() => window.scrollY)).toBe(before);
+});

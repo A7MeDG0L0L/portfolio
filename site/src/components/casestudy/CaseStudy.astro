@@ -84,7 +84,8 @@ const meta = [d.company, d.dates].filter(Boolean).join(' · ');
   h1 { font-size: clamp(34px, 5vw, 56px); letter-spacing: -.03em; margin: 8px 0 10px; }
   :global(html:lang(ar)) h1 { letter-spacing: 0; }
   .lead { color: var(--muted); font-size: 18px; margin: 0; max-width: 680px; line-height: 1.6; }
-  .grid { display: grid; grid-template-columns: 1fr 320px; gap: 40px; margin-top: 36px; align-items: start; }
+  .grid > * { min-width: 0; }
+  .grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; margin-top: 36px; align-items: start; }
   .body h2, .side h2 { font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin: 0 0 12px; font-weight: 600; }
   :global(html:lang(ar)) .body h2, :global(html:lang(ar)) .side h2 { letter-spacing: 0; }
   .body section { margin-bottom: 32px; }

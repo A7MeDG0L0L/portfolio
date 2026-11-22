@@ -8,7 +8,7 @@ dates: 2021 – 2022
 order: 3
 icon: { label: "K", bg: "#ff8a00" }
 summary: تطبيق تجارة إلكترونية مبني من الصفر على WooCommerce API.
-problem: بناء تطبيق تجارة إلكترونية كامل من الصفر فوق متجر WooCommerce قائم.
+problem: بناء تطبيق تجارة إلكترونية كامل من الصفر على WooCommerce API.
 highlights:
   - بنيت تطبيق التجارة الإلكترونية من الصفر باستخدام BloC وDio وSQLite
   - ربطته مع WooCommerce API
@@ -17,4 +17,4 @@ stack: [Flutter, BloC, Dio, SQLite, WooCommerce API]
 links: { github: "https://github.com/A7MeDG0L0L/khsomat" }
 locale: ar
 ---
-تطبيق متجر إلكتروني بكتالوج وسلة مشتريات وإشعارات، مبني بالكامل على WooCommerce.
+تطبيق تجارة إلكترونية مبني بالكامل على WooCommerce API، مع دعم تعدد اللغات والإشعارات.

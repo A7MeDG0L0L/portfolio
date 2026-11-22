@@ -15,7 +15,8 @@ test('toggle keeps page', async ({ page }) => {
   expect(new URL(page.url()).pathname).toBe('/work/khosomat/');
 });
 
-for (const p of ['/', '/ar/', '/work/shop-and-ship/', '/ar/work/shop-and-ship/']) {
+const slugs = ['shop-and-ship', 'bluworks-tablet', 'khosomat', 'nasa-daily', 'made-me-laugh', 'simple-file-manager', 'flutter-pdf-designer'];
+for (const p of ['/', '/ar/', ...slugs.flatMap((s) => [`/work/${s}/`, `/ar/work/${s}/`])]) {
   test(`no horizontal scroll at 360px: ${p}`, async ({ page }) => {
     await page.setViewportSize({ width: 360, height: 780 });
     const res = await page.goto(p);
@@ -36,4 +37,11 @@ test('case study shows only defined links', async ({ page }) => {
   const links = page.getByTestId('project-links').getByRole('link');
   await expect(links).toHaveCount(1);
   await expect(links.first()).toHaveAttribute('href', 'https://github.com/A7MeDG0L0L/khsomat');
+});
+
+test('toggle keeps anchor', async ({ page }) => {
+  await page.goto('/#experience');
+  await expect(page.getByTestId('lang-toggle')).toHaveAttribute('href', '/ar/#experience');
+  await page.evaluate(() => { location.hash = 'work'; });
+  await expect(page.getByTestId('lang-toggle')).toHaveAttribute('href', '/ar/#work');
 });

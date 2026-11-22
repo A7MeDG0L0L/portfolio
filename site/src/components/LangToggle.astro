@@ -3,9 +3,17 @@ import { altLocalePath, t, getLocaleFromUrl } from '../i18n/utils';
 const locale = getLocaleFromUrl(Astro.url);
 const other = locale === 'en' ? 'ar' : 'en';
 ---
-<a class="lang" href={altLocalePath(Astro.url)} hreflang={other} lang={other} aria-label={t(locale, 'langToggleLabel')} data-testid="lang-toggle">
+<a class="lang" href={altLocalePath(Astro.url)} hreflang={other} lang={other} aria-label={t(locale, 'langToggleLabel')} data-testid="lang-toggle" data-base={altLocalePath(Astro.url)}>
   {t(locale, 'langToggle')}
 </a>
+<script>
+  const sync = () =>
+    document.querySelectorAll<HTMLAnchorElement>('[data-testid="lang-toggle"]').forEach((a) => {
+      a.href = (a.dataset.base ?? a.getAttribute('href') ?? '/') + location.hash;
+    });
+  sync();
+  window.addEventListener('hashchange', sync);
+</script>
 <style>
   .lang { display: inline-grid; place-items: center; min-width: 38px; height: 38px; padding-inline: 10px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel); font-weight: 600; font-size: 14px; }
   .lang:hover { border-color: var(--muted); }

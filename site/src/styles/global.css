@@ -24,7 +24,7 @@
   --line: #e3e6ee;
   --text: #0b0d12;
   --muted: #4a5163;
-  --accent: #0b7fb5;
+  --accent: #0a6f9e;
   --accent2: #5b3fe0;
   --ok: #0f9d63;
   --on-text: #ffffff;
@@ -48,6 +48,7 @@ a { color: inherit; text-decoration: none; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 .grad { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .container-x { max-width: 1180px; margin-inline: auto; padding-inline: 24px; }
+html.sheet-open { overflow: hidden; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 @media (prefers-reduced-motion: reduce) {

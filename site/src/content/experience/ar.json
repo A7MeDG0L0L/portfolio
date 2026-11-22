@@ -41,7 +41,7 @@
     {
       "company": "Khosomat.com", "title": "مطوّر Flutter", "start": "2021-08", "end": "2022-01", "inTimeline": true,
       "bullets": [
-        "بنيت تطبيق خصومات للتجارة الإلكترونية من الصفر باستخدام BloC وDio وSQLite وWooCommerce API",
+        "بنيت تطبيق Khosomat للتجارة الإلكترونية من الصفر باستخدام BloC وDio وSQLite وWooCommerce API",
         "نفّذت دعم تعدد اللغات والتصميم المتجاوب والإشعارات"
       ]
     }

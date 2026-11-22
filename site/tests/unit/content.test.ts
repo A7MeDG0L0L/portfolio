@@ -116,3 +116,16 @@ describe('Arabic content mirrors English facts', () => {
     expect(arExperience.roles.map(pick)).toEqual(experience.roles.map(pick));
   });
 });
+
+describe('copy stays within the CV', () => {
+  const files = (dir: string) => fs.readdirSync(path.join(root, dir)).map((f) => fs.readFileSync(path.join(root, dir, f), 'utf8'));
+  const all = ['profile', 'experience', 'projects'].flatMap(files).join('\n');
+  it('makes no claims the CV does not (iOS, startups, invented product features)', () => {
+    for (const phrase of [/\biOS\b/, /\bstartups\b/i, /ناشئة/, /catalogue/i, /كتالوج/, /existing WooCommerce/i, /متجر WooCommerce قائم/]) {
+      expect(all, String(phrase)).not.toMatch(phrase);
+    }
+  });
+  it('keeps the Khosomat brand untranslated in Arabic', () => {
+    expect(fs.readFileSync(path.join(root, 'experience/ar.json'), 'utf8')).not.toMatch(/تطبيق خصومات/);
+  });
+});

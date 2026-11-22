@@ -4,7 +4,7 @@
   "location": "Cairo, Egypt",
   "headline": "I build mobile apps that feel",
   "headlineAccent": "fast, smooth & native.",
-  "intro": "Flutter & Android developer with 5 years of experience shipping apps for Aramex, Bluworks and growing startups. Offline-first, bilingual (Arabic/English) and built to scale.",
+  "intro": "Flutter & Android developer with 5 years of experience shipping apps for Aramex, Bluworks and more. Offline-first, bilingual (Arabic/English) and built to scale.",
   "available": true,
   "availabilityText": "Open to full-time roles & freelance projects",
   "email": "agalal819@gmail.com",
@@ -32,7 +32,7 @@
     "companiesTitle": "Hiring a Flutter developer?",
     "companiesText": "Native-to-Flutter migrations, Clean Architecture, performance work and close collaboration with product, design and QA.",
     "clientsTitle": "Need an app built?",
-    "clientsText": "From idea to store: Android & iOS, Arabic & English. Message me on WhatsApp or email.",
+    "clientsText": "From idea to launch: cross-platform Flutter apps in Arabic & English. Message me on WhatsApp or email.",
     "stack": ["Flutter", "Dart", "Kotlin", "Jetpack Compose", "BloC", "Clean Architecture", "Firebase", "HERE Maps", "SQLite"]
   }
 }
