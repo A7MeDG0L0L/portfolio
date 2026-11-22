@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Directions</title>
+<style>
+:root{
+  --bg:#0b0d12; --panel:#12151d; --panel2:#181c26; --line:#252a37;
+  --text:#e9ecf3; --muted:#8b93a7; --accent:#54c5f8; --accent2:#7c5cff; --ok:#3ddc97;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Inter,Roboto,sans-serif;
+  --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:var(--font);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+/* direction switcher */
+.switch{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:4px;
+  background:rgba(18,21,29,.85);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:999px;padding:4px}
+.switch button{padding:8px 16px;border-radius:999px;font-size:13px;color:var(--muted);white-space:nowrap}
+.switch button.on{background:var(--text);color:#0b0d12;font-weight:600}
+.dir{display:none;min-height:100vh}
+.dir.on{display:block}
+.note{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:50;font-size:12px;color:var(--muted);
+  background:rgba(18,21,29,.85);border:1px solid var(--line);padding:6px 12px;border-radius:999px;white-space:nowrap}
+
+/* ============ A — THE APP ============ */
+#A{background:radial-gradient(1200px 600px at 75% 20%,rgba(124,92,255,.18),transparent 60%),
+  radial-gradient(900px 500px at 10% 80%,rgba(84,197,248,.12),transparent 60%),var(--bg)}
+.a-hero{max-width:1180px;margin:0 auto;padding:100px 24px 40px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);border:1px solid var(--line);
+  padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.02)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(61,220,151,.15)}
+.a-hero h1{font-size:clamp(40px,5.4vw,68px);line-height:1.02;letter-spacing:-.03em;margin:20px 0 18px;font-weight:750}
+.grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.a-hero p.lead{font-size:18px;color:var(--muted);line-height:1.55;max-width:520px}
+.ctas{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{padding:14px 20px;border-radius:14px;font-weight:600;font-size:15px;display:inline-flex;gap:10px;align-items:center}
+.btn.primary{background:var(--text);color:#0b0d12}
+.btn.ghost{border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.btn small{font-weight:400;opacity:.65;font-size:12px}
+.trust{margin-top:34px;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+.logos{display:flex;gap:22px;margin-top:12px;flex-wrap:wrap;font-weight:700;color:#c9cfdc;font-size:17px;opacity:.8}
+
+.phone-wrap{display:flex;justify-content:center;position:relative}
+.phone{width:310px;height:630px;border-radius:52px;background:#05060a;padding:12px;
+  box-shadow:0 0 0 2px #2a2f3c,0 40px 80px -20px rgba(0,0,0,.7),0 0 120px -30px rgba(124,92,255,.5);position:relative}
+.screen{width:100%;height:100%;border-radius:42px;overflow:hidden;position:relative;
+  background:linear-gradient(160deg,#1c2340 0%,#2a1b4d 55%,#0f2a3d 100%)}
+.island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:96px;height:28px;background:#000;border-radius:20px;z-index:5}
+.status{display:flex;justify-content:space-between;padding:16px 26px 0;font-size:13px;font-weight:600}
+.widget{margin:28px 18px 18px;padding:16px;border-radius:22px;background:rgba(255,255,255,.08);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08)}
+.widget .big{font-size:30px;font-weight:750;letter-spacing:-.02em}
+.widget .sm{font-size:12px;color:#b9c0d4}
+.icons{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 10px;padding:4px 18px}
+.app{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:10.5px;color:#e6e9f2}
+.ic{width:56px;height:56px;border-radius:15px;display:grid;place-items:center;font-weight:800;font-size:20px;
+  box-shadow:0 6px 16px rgba(0,0,0,.35);transition:transform .15s}
+.app:hover .ic{transform:scale(1.08)}
+.dock{position:absolute;bottom:14px;left:14px;right:14px;height:78px;border-radius:28px;background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);display:flex;justify-content:space-around;align-items:center}
+.dock .ic{width:52px;height:52px}
+.hint{position:absolute;right:-170px;top:180px;font-size:13px;color:var(--muted);width:150px;line-height:1.4}
+.hint::before{content:"←";display:block;font-size:22px;color:var(--accent)}
+
+.appview{position:absolute;inset:0;background:#0d1018;z-index:4;transform:translateY(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);
+  overflow-y:auto;padding:54px 18px 24px}
+.appview.open{transform:none}
+.appview .back{font-size:13px;color:var(--accent);margin-bottom:14px}
+.appview .cover{height:120px;border-radius:18px;margin-bottom:14px;display:grid;place-items:center;font-size:34px;font-weight:800}
+.appview h3{font-size:22px;letter-spacing:-.02em}
+.appview .meta{font-size:12px;color:var(--muted);margin:4px 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chip{font-size:11px;padding:4px 9px;border-radius:999px;background:rgba(84,197,248,.1);color:var(--accent);border:1px solid rgba(84,197,248,.2)}
+.appview ul{list-style:none;display:grid;gap:8px}
+.appview li{font-size:13px;line-height:1.45;color:#cfd5e3;padding-left:16px;position:relative}
+.appview li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:2px;background:var(--accent2)}
+
+.a-facts{max-width:1180px;margin:0 auto;padding:20px 24px 90px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.fact{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px}
+.fact .n{font-size:34px;font-weight:750;letter-spacing:-.03em}
+.fact .l{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* ============ B — BENTO ============ */
+#B{background:#0a0b0f}
+.bento{max-width:1180px;margin:0 auto;padding:84px 24px 70px;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:130px;gap:14px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:22px;position:relative;overflow:hidden;
+  transition:border-color .2s,transform .2s;cursor:pointer}
+.tile:hover{border-color:#3a4152;transform:translateY(-2px)}
+.tile .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+.tile h2{font-size:38px;letter-spacing:-.03em;line-height:1.05;margin:10px 0}
+.tile p{color:var(--muted);font-size:14px;line-height:1.5}
+.t-intro{grid-column:span 4;grid-row:span 3;background:linear-gradient(145deg,#141a2b,#1b1430)}
+.t-photo{grid-column:span 2;grid-row:span 2;background:linear-gradient(160deg,#54c5f8,#7c5cff);display:grid;place-items:center}
+.avatar{width:120px;height:120px;border-radius:50%;background:rgba(0,0,0,.25);display:grid;place-items:center;font-size:44px;font-weight:800;color:#fff;border:3px solid rgba(255,255,255,.4)}
+.t-status{grid-column:span 2;grid-row:span 1;display:flex;flex-direction:column;justify-content:center}
+.t-now{grid-column:span 3;grid-row:span 2}
+.t-stack{grid-column:span 3;grid-row:span 2}
+.t-proj{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column;justify-content:flex-end}
+.t-proj .ph{position:absolute;inset:0;opacity:.9}
+.t-proj > *:not(.ph){position:relative}
+.t-ai{grid-column:span 2;grid-row:span 2;background:linear-gradient(160deg,#1a1430,#12151d)}
+.t-path{grid-column:span 4;grid-row:span 2}
+.t-contact{grid-column:span 2;grid-row:span 2;background:var(--text);color:#0b0d12}
+.t-contact p{color:#3c4252}
+.timeline{display:flex;gap:6px;margin-top:16px}
+.timeline div{flex:1;border-top:3px solid var(--line);padding-top:8px;font-size:12px;color:var(--muted)}
+.timeline div.cur{border-color:var(--accent)}
+.timeline b{display:block;color:var(--text);font-size:13px}
+.expand{font-size:12px;color:var(--accent);position:absolute;top:20px;right:22px}
+.tile.big{grid-column:1/-1;grid-row:span 3;z-index:3}
+
+/* ============ C — CODE EDITOR ============ */
+#C{background:#1e1e1e;font-family:var(--mono)}
+.ide{position:fixed;inset:60px 24px 54px;border-radius:12px;overflow:hidden;border:1px solid #333;display:grid;
+  grid-template-rows:34px 1fr 24px;grid-template-columns:48px 240px 1fr;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.titlebar{grid-column:1/-1;background:#2d2d2d;display:flex;align-items:center;padding:0 12px;gap:8px;font-size:12px;color:#aaa;font-family:var(--font)}
+.tl{width:12px;height:12px;border-radius:50%}
+.titlebar .t{flex:1;text-align:center}
+.activity{background:#333;display:flex;flex-direction:column;align-items:center;gap:18px;padding-top:14px;color:#888;font-size:18px}
+.explorer{background:#252526;font-size:13px;color:#ccc;padding:10px 0;overflow:auto}
+.explorer .hd{font-size:11px;letter-spacing:.1em;color:#999;padding:0 16px 8px;font-family:var(--font)}
+.f{padding:4px 16px;cursor:pointer;display:flex;gap:8px;align-items:center}
+.f:hover{background:#2a2d2e}
+.f.on{background:#37373d;color:#fff}
+.f.ind{padding-left:32px}
+.f .x{font-size:11px;width:14px;text-align:center}
+.editor{background:#1e1e1e;overflow:auto;display:flex;flex-direction:column}
+.tabs{display:flex;background:#252526;font-size:13px}
+.tabs div{padding:9px 16px;color:#999;border-right:1px solid #1e1e1e}
+.tabs div.on{background:#1e1e1e;color:#fff;border-top:1px solid var(--accent)}
+pre{padding:18px 0;font-size:14px;line-height:1.7;counter-reset:ln;color:#d4d4d4;font-family:var(--mono)}
+pre span.l{display:block;padding-left:64px;position:relative}
+pre span.l::before{counter-increment:ln;content:counter(ln);position:absolute;left:0;width:44px;text-align:right;color:#5a5a5a}
+.kw{color:#c586c0}.ty{color:#4ec9b0}.st{color:#ce9178}.cm{color:#6a9955}.fn{color:#dcdcaa}.nu{color:#b5cea8}.pr{color:#9cdcfe}
+.statusbar{grid-column:1/-1;background:#007acc;color:#fff;font-size:12px;display:flex;align-items:center;gap:18px;padding:0 12px;font-family:var(--font)}
+.statusbar .r{margin-left:auto}
+.runbtn{position:absolute;right:20px;top:46px;background:#0e639c;color:#fff;font-family:var(--font);font-size:12px;padding:6px 12px;border-radius:4px}
+
+@media (max-width:900px){
+  .a-hero{grid-template-columns:1fr;padding-top:84px}.hint{display:none}
+  .a-facts{grid-template-columns:repeat(2,1fr)}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
+  .bento .tile{grid-column:span 2!important;grid-row:auto!important;min-height:150px}
+  .tile h2{font-size:30px}
+  .ide{inset:60px 8px 54px;grid-template-columns:0 0 1fr}
+  .switch button{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="switch">
+  <button data-d="M" class="on">A+B Mix ★</button>
+  <button data-d="A">A · The App</button>
+  <button data-d="B">B · Bento</button>
+  <button data-d="C">C · Code Editor</button>
+</nav>
+<div class="note" id="note">Mockup only. Tap the phone icons, then scroll to the tiles.</div>
+
+<!-- ================= MIX (A hero + B grid) ================= -->
+<section class="dir on" id="M" style="background:radial-gradient(1200px 600px at 75% 10%,rgba(124,92,255,.18),transparent 60%),radial-gradient(900px 500px at 10% 40%,rgba(84,197,248,.10),transparent 60%),var(--bg)">
+  <div class="a-hero">
+    <div>
+      <span class="pill"><span class="dot"></span> Open to full-time roles &amp; freelance projects</span>
+      <h1>I build mobile apps<br>that feel <span class="grad">fast, smooth<br>&amp; native.</span></h1>
+      <p class="lead">Ahmed Galal, a Flutter &amp; Android developer with 5 years of shipping apps for Aramex, Bluworks and startups across MEA. Offline-first, bilingual (AR/EN), and built to scale.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#">Hire me full-time <small>CV ↓</small></a>
+        <a class="btn ghost" href="#">Build my app <small>WhatsApp</small></a>
+      </div>
+      <div class="trust">Shipped apps for</div>
+      <div class="logos"><span>aramex</span><span>bluworks</span><span>Tecfy</span><span>Khosomat</span></div>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span>5G ▮▮▮</span></div>
+          <div class="widget">
+            <div class="sm">Experience</div>
+            <div class="big">5 yrs · 5 teams</div>
+            <div class="sm">Flutter · Kotlin · Compose</div>
+          </div>
+          <div class="icons">
+            <button class="app" data-p="shopship"><span class="ic" style="background:#e1251b">S&amp;S</span>Shop&amp;Ship</button>
+            <button class="app" data-p="bluworks"><span class="ic" style="background:#1f6bff">b</span>Bluworks</button>
+            <button class="app" data-p="khosomat"><span class="ic" style="background:#ff8a00">K</span>Khosomat</button>
+            <button class="app" data-p="nasa"><span class="ic" style="background:#0b3d91">✦</span>NASA</button>
+            <button class="app" data-p="laugh"><span class="ic" style="background:#ffd23f;color:#222">ha</span>Laugh</button>
+            <button class="app" data-p="files"><span class="ic" style="background:#3ddc97;color:#062">▤</span>Files pkg</button>
+            <button class="app" data-p="pdf"><span class="ic" style="background:#fff;color:#d00">PDF</span>PDF pkg</button>
+            <button class="app" data-p="ai"><span class="ic" style="background:linear-gradient(135deg,#7c5cff,#54c5f8)">AI</span>AI Dev</button>
+          </div>
+          <div class="dock">
+            <span class="ic" style="background:#2a2f3c" title="About">👤</span>
+            <span class="ic" style="background:#2a2f3c" title="Experience">⌚</span>
+            <span class="ic" style="background:#25d366" title="WhatsApp">✆</span>
+            <span class="ic" style="background:#0a66c2" title="LinkedIn">in</span>
+          </div>
+          <div class="appview"></div>
+        </div>
+      </div>
+      <div class="hint">Every project is an app. Tap one to open its case study.</div>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:10px 24px 0">
+    <div class="k" style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em">Quick look · 10 seconds</div>
+  </div>
+  <div class="bento" id="bento2" style="padding-top:14px">
+    <div class="tile" style="grid-column:span 2;grid-row:span 1"><div class="n" style="font-size:34px;font-weight:750">5 yrs</div><p>Flutter + Android Native</p></div>
+    <div class="tile" style="grid-column:span 2;grid-row:span 1"><div class="n" style="font-size:34px;font-weight:750">AR / EN</div><p>Bilingual, RTL-ready UIs</p></div>
+    <div class="tile" style="grid-column:span 2;grid-row:span 1"><div class="n" style="font-size:34px;font-weight:750">Offline-first</div><p>Apps that work without signal</p></div>
+    <div class="tile t-now" data-x="now"><span class="expand">↗</span>
+      <div class="k">Now · Bluworks</div><h2 style="font-size:26px">Offline tablet refactor + design system</h2>
+      <p>Faster startup, fewer critical bugs, consistent UI across the product.</p>
+    </div>
+    <div class="tile t-stack"><div class="k">Stack</div>
+      <div class="chips" style="margin-top:14px">
+        <span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Kotlin</span><span class="chip">Jetpack Compose</span>
+        <span class="chip">BloC</span><span class="chip">Clean Architecture</span><span class="chip">Firebase</span><span class="chip">HERE Maps</span><span class="chip">SQLite</span>
+      </div>
+    </div>
+    <div class="tile t-path"><div class="k">Path</div>
+      <div class="timeline">
+        <div><b>Khosomat</b>2021</div><div><b>Freelance</b>2022</div><div><b>Tecfy</b>2022–23</div><div><b>Aramex</b>2023–25</div><div class="cur"><b>Bluworks</b>Now</div>
+      </div>
+    </div>
+    <div class="tile t-ai"><div class="k">Edge</div><h2 style="font-size:24px">AI-native dev</h2><p>MCP, spec-driven development, Claude &amp; Cursor daily.</p></div>
+    <div class="tile" style="grid-column:span 3;grid-row:span 2"><div class="k">For companies</div><h2 style="font-size:26px">Hiring a Flutter dev?</h2><p>Native→Flutter migrations, Clean Architecture, performance, team collaboration.</p><div class="ctas"><a class="btn primary" href="#">Download CV</a><a class="btn ghost" href="#">LinkedIn</a></div></div>
+    <div class="tile t-contact" style="grid-column:span 3"><div class="k" style="color:#555">For clients</div><h2 style="font-size:26px">Need an app built? →</h2><p>From idea to store: Android &amp; iOS, Arabic &amp; English. Message me on WhatsApp or email.</p></div>
+  </div>
+</section>
+
+<!-- ================= A ================= -->
+<section class="dir" id="A">
+  <div class="a-hero">
+    <div>
+      <span class="pill"><span class="dot"></span> Open to full-time roles &amp; freelance projects</span>
+      <h1>I build mobile apps<br>that feel <span class="grad">fast, smooth<br>&amp; native.</span></h1>
+      <p class="lead">Ahmed Galal, a Flutter &amp; Android developer with 5 years of shipping apps for Aramex, Bluworks and startups across MEA. Offline-first, bilingual (AR/EN), and built to scale.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#">Hire me full-time <small>CV ↓</small></a>
+        <a class="btn ghost" href="#">Build my app <small>WhatsApp</small></a>
+      </div>
+      <div class="trust">Shipped apps for</div>
+      <div class="logos"><span>aramex</span><span>bluworks</span><span>Tecfy</span><span>Khosomat</span></div>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span>5G ▮▮▮</span></div>
+          <div class="widget">
+            <div class="sm">Experience</div>
+            <div class="big">5 yrs · 5 teams</div>
+            <div class="sm">Flutter · Kotlin · Compose</div>
+          </div>
+          <div class="icons">
+            <button class="app" data-p="shopship"><span class="ic" style="background:#e1251b">S&amp;S</span>Shop&amp;Ship</button>
+            <button class="app" data-p="bluworks"><span class="ic" style="background:#1f6bff">b</span>Bluworks</button>
+            <button class="app" data-p="khosomat"><span class="ic" style="background:#ff8a00">K</span>Khosomat</button>
+            <button class="app" data-p="nasa"><span class="ic" style="background:#0b3d91">✦</span>NASA</button>
+            <button class="app" data-p="laugh"><span class="ic" style="background:#ffd23f;color:#222">ha</span>Laugh</button>
+            <button class="app" data-p="files"><span class="ic" style="background:#3ddc97;color:#062">▤</span>Files pkg</button>
+            <button class="app" data-p="pdf"><span class="ic" style="background:#fff;color:#d00">PDF</span>PDF pkg</button>
+            <button class="app" data-p="ai"><span class="ic" style="background:linear-gradient(135deg,#7c5cff,#54c5f8)">AI</span>AI Dev</button>
+          </div>
+          <div class="dock">
+            <span class="ic" style="background:#2a2f3c" title="About">👤</span>
+            <span class="ic" style="background:#2a2f3c" title="Experience">⌚</span>
+            <span class="ic" style="background:#25d366" title="WhatsApp">✆</span>
+            <span class="ic" style="background:#0a66c2" title="LinkedIn">in</span>
+          </div>
+          <div class="appview"></div>
+        </div>
+      </div>
+      <div class="hint">Every project is an app. Tap one to open its case study.</div>
+    </div>
+  </div>
+  <div class="a-facts">
+    <div class="fact"><div class="n">5 yrs</div><div class="l">Flutter + Android Native</div></div>
+    <div class="fact"><div class="n">AR / EN</div><div class="l">Bilingual, RTL-ready UIs</div></div>
+    <div class="fact"><div class="n">Offline</div><div class="l">First-class offline support</div></div>
+    <div class="fact"><div class="n">2</div><div class="l">Published Flutter packages</div></div>
+  </div>
+</section>
+
+<!-- ================= B ================= -->
+<section class="dir" id="B">
+  <div class="bento" id="bento">
+    <div class="tile t-intro">
+      <div class="k">Mobile Application Developer · Cairo</div>
+      <h2>Hi, I'm Ahmed.<br>I turn ideas into<br><span class="grad">smooth mobile apps.</span></h2>
+      <p style="max-width:520px">5 years in Flutter &amp; Android Native. I revamped Aramex's Shop &amp; Ship and now build at Bluworks: offline-first, bilingual, built to scale.</p>
+      <div class="ctas"><a class="btn primary" href="#">Hire me full-time</a><a class="btn ghost" href="#">Build my app</a></div>
+    </div>
+    <div class="tile t-photo"><div class="avatar">AG</div></div>
+    <div class="tile t-status"><div class="k"><span class="dot" style="display:inline-block;margin-right:8px"></span>Available</div><p style="color:var(--text);margin-top:6px">Full-time &amp; freelance</p></div>
+    <div class="tile t-now" data-x="now"><span class="expand">↗</span>
+      <div class="k">Now</div><h2 style="font-size:26px">Bluworks</h2>
+      <p>Refactored an offline tablet app, built the design system, cut startup time.</p>
+    </div>
+    <div class="tile t-stack"><div class="k">Stack</div>
+      <div class="chips" style="margin-top:14px">
+        <span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Kotlin</span><span class="chip">Jetpack Compose</span>
+        <span class="chip">BloC</span><span class="chip">Clean Architecture</span><span class="chip">Firebase</span><span class="chip">HERE Maps</span><span class="chip">SQLite</span>
+      </div>
+    </div>
+    <div class="tile t-proj" data-x="ss"><div class="ph" style="background:linear-gradient(160deg,#e1251b,#5a0d0a)"></div><span class="expand" style="color:#fff">↗</span>
+      <div class="k" style="color:#ffd9d6">Case study</div><h2 style="font-size:24px;margin:4px 0 0">Shop &amp; Ship</h2><p style="color:#ffd9d6">Native → Flutter revamp</p></div>
+    <div class="tile t-proj" data-x="kh"><div class="ph" style="background:linear-gradient(160deg,#ff8a00,#5a2c00)"></div><span class="expand" style="color:#fff">↗</span>
+      <div class="k" style="color:#ffe6c7">Case study</div><h2 style="font-size:24px;margin:4px 0 0">Khosomat</h2><p style="color:#ffe6c7">E-commerce from scratch</p></div>
+    <div class="tile t-ai"><div class="k">Edge</div><h2 style="font-size:24px">AI-native dev</h2><p>MCP, spec-driven development, Claude &amp; Cursor in my daily workflow.</p></div>
+    <div class="tile t-path"><div class="k">Path</div>
+      <div class="timeline">
+        <div><b>Khosomat</b>2021</div><div><b>Freelance</b>2022</div><div><b>Tecfy</b>2022–23</div><div><b>Aramex</b>2023–25</div><div class="cur"><b>Bluworks</b>Now</div>
+      </div>
+    </div>
+    <div class="tile t-contact"><div class="k" style="color:#555">Contact</div><h2 style="font-size:26px">Let's talk →</h2><p>WhatsApp · Email · LinkedIn · GitHub</p></div>
+  </div>
+</section>
+
+<!-- ================= C ================= -->
+<section class="dir" id="C">
+  <div class="ide">
+    <div class="titlebar"><span class="tl" style="background:#ff5f57"></span><span class="tl" style="background:#febc2e"></span><span class="tl" style="background:#28c840"></span><span class="t">ahmed_galal — portfolio</span></div>
+    <div class="activity"><span>⎘</span><span>⌕</span><span>⑂</span><span>▷</span></div>
+    <div class="explorer">
+      <div class="hd">EXPLORER</div>
+      <div class="f">▾ lib</div>
+      <div class="f ind on" data-c="about"><span class="x" style="color:#54c5f8">◆</span>about_me.dart</div>
+      <div class="f ind" data-c="exp"><span class="x" style="color:#54c5f8">◆</span>experience.dart</div>
+      <div class="f ind" data-c="proj"><span class="x" style="color:#54c5f8">◆</span>projects.dart</div>
+      <div class="f ind" data-c="skills"><span class="x" style="color:#cbcb41">{}</span>skills.json</div>
+      <div class="f ind" data-c="contact"><span class="x" style="color:#e37933">✉</span>contact.md</div>
+      <div class="f">▸ packages</div>
+      <div class="f">▸ certificates</div>
+    </div>
+    <div class="editor" style="position:relative">
+      <div class="tabs"><div class="on" id="tabname">about_me.dart</div></div>
+      <button class="runbtn">▷ Run → Hire Ahmed</button>
+      <pre id="code"></pre>
+    </div>
+    <div class="statusbar"><span>⑂ main</span><span>✓ 0 problems</span><span class="r">Flutter 3 · Dart · Open to work ●</span></div>
+  </div>
+</section>
+
+<script>
+// ---------- direction switcher ----------
+const notes={M:"Mockup only. Tap the phone icons, then scroll to the tiles.",A:"Mockup only. Tap the app icons inside the phone.",B:"Mockup only. Click a tile with ↗ to expand it.",C:"Mockup only. Click files in the explorer."};
+document.querySelectorAll('.switch button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.switch button').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.dir').forEach(d=>d.classList.toggle('on',d.id===b.dataset.d));
+  document.getElementById('note').textContent=notes[b.dataset.d];
+});
+
+// ---------- A: phone app case studies ----------
+const P={
+ shopship:{t:"Shop & Ship",m:"Aramex · 2023–2025",c:"#e1251b",i:"S&S",s:["Flutter","Clean Architecture","HERE Maps","Firebase","Payments"],
+  b:["Revamped the native app to Flutter with Clean Architecture","Bilingual Arabic/English responsive UI","Integrated HERE Maps, Firebase (Analytics, Crashlytics, FCM) and secure payment gateways","Added offline support and optimized performance"]},
+ bluworks:{t:"Bluworks Tablet",m:"Bluworks · 2025–now",c:"#1f6bff",i:"b",s:["Flutter","Offline-first","Design System"],
+  b:["Led a full refactor of the tablet app with online/offline support","Improved startup time and overall performance","Designed a scalable design system","Redesigned key screens and main flows"]},
+ khosomat:{t:"Khosomat",m:"Khosomat.com · 2021–2022",c:"#ff8a00",i:"K",s:["Flutter","BloC","Dio","WooCommerce API","SQLite"],
+  b:["Built the e-commerce app from scratch","Localization, responsive design and notifications"]},
+ nasa:{t:"Daily Images by NASA",m:"Side project",c:"#0b3d91",i:"✦",s:["Flutter","Dio","Animations"],b:["Fetches and saves NASA's daily space images","Smooth animations and gallery saving"]},
+ laugh:{t:"Made Me Laugh",m:"Side project",c:"#ffd23f",i:"ha",s:["Firestore","FCM","Audio"],b:["Joke-sharing app with Firebase Firestore","Push notifications and audio features"]},
+ files:{t:"Simple File Manager",m:"Open-source Flutter package",c:"#3ddc97",i:"▤",s:["Dart","pub.dev"],b:["Reusable file manager package for Flutter teams"]},
+ pdf:{t:"Flutter PDF Designer",m:"Open-source Flutter package",c:"#d00000",i:"PDF",s:["Dart","pub.dev"],b:["Design PDFs from Flutter widgets"]},
+ ai:{t:"AI-Native Development",m:"How I work",c:"#7c5cff",i:"AI",s:["MCP","Spec-driven","Claude","Cursor","Copilot"],b:["Spec-driven development with AI agents","Building with MCP (Model Context Protocol)","AI-assisted code generation and debugging"]}
+};
+document.querySelectorAll('.app').forEach(a=>a.onclick=()=>{
+  const p=P[a.dataset.p];
+  const av=a.closest('.screen').querySelector('.appview');
+  av.innerHTML=`<button class="back" id="back">‹ Home</button>
+   <div class="cover" style="background:linear-gradient(135deg,${p.c},#1a1d29)">${p.i}</div>
+   <h3>${p.t}</h3><div class="meta">${p.m}</div>
+   <div class="chips">${p.s.map(s=>`<span class="chip">${s}</span>`).join('')}</div>
+   <ul>${p.b.map(x=>`<li>${x}</li>`).join('')}</ul>
+   <div style="margin-top:16px;font-size:12px;color:var(--muted)">[ screenshots + store links go here ]</div>`;
+  av.classList.add('open');
+  av.querySelector('.back').onclick=()=>av.classList.remove('open');
+});
+
+// ---------- B: expand tile ----------
+document.querySelectorAll('.bento .tile[data-x]').forEach(t=>t.onclick=()=>{
+  const wasBig=t.classList.contains('big');
+  t.parentElement.querySelectorAll('.tile').forEach(x=>x.classList.remove('big'));
+  if(!wasBig){t.classList.add('big');t.scrollIntoView({behavior:'smooth',block:'center'})}
+});
+
+// ---------- C: code files ----------
+const L=s=>s.split('\n').map(l=>`<span class="l">${l||' '}</span>`).join('');
+const C={
+about:`<span class="cm">/// Mobile Application Developer · Cairo, Egypt</span>
+<span class="kw">class</span> <span class="ty">AhmedGalal</span> <span class="kw">extends</span> <span class="ty">Developer</span> {
+  <span class="kw">final</span> <span class="pr">experience</span> = <span class="nu">5</span>.years;
+  <span class="kw">final</span> <span class="pr">focus</span> = [<span class="st">'Flutter'</span>, <span class="st">'Android Native'</span>, <span class="st">'Jetpack Compose'</span>];
+  <span class="kw">final</span> <span class="pr">languages</span> = [<span class="st">'العربية'</span>, <span class="st">'English'</span>];
+
+  <span class="cm">// What I care about</span>
+  <span class="kw">final</span> <span class="pr">values</span> = [
+    <span class="st">'performance'</span>, <span class="st">'security'</span>, <span class="st">'clean code'</span>, <span class="st">'intuitive UX'</span>,
+  ];
+
+  <span class="ty">bool</span> <span class="kw">get</span> <span class="fn">openToWork</span> => <span class="kw">true</span>; <span class="cm">// full-time & freelance</span>
+}`,
+exp:`<span class="kw">const</span> <span class="pr">experience</span> = [
+  <span class="ty">Role</span>(<span class="st">'Bluworks'</span>,  <span class="st">'2025 – now'</span>,  [<span class="st">'Offline tablet refactor'</span>, <span class="st">'Design system'</span>]),
+  <span class="ty">Role</span>(<span class="st">'Aramex'</span>,    <span class="st">'2023 – 2025'</span>, [<span class="st">'Shop & Ship → Flutter'</span>, <span class="st">'HERE Maps'</span>, <span class="st">'Payments'</span>]),
+  <span class="ty">Role</span>(<span class="st">'Tecfy.co'</span>,  <span class="st">'2022 – 2023'</span>, [<span class="st">'Custom Flutter packages'</span>]),
+  <span class="ty">Role</span>(<span class="st">'Freelance'</span>, <span class="st">'2022'</span>,        [<span class="st">'Production fixes & features'</span>]),
+  <span class="ty">Role</span>(<span class="st">'Khosomat'</span>,  <span class="st">'2021 – 2022'</span>, [<span class="st">'E-commerce app from scratch'</span>]),
+];`,
+proj:`<span class="kw">final</span> <span class="pr">projects</span> = {
+  <span class="st">'Shop & Ship'</span>:     <span class="st">'Native → Flutter, maps, payments, offline, AR/EN'</span>,
+  <span class="st">'Khosomat'</span>:        <span class="st">'WooCommerce e-commerce, BloC, Dio'</span>,
+  <span class="st">'Made Me Laugh'</span>:   <span class="st">'Firestore, FCM, audio'</span>,
+  <span class="st">'NASA Daily'</span>:      <span class="st">'Dio, animations, gallery saver'</span>,
+  <span class="st">'pub.dev packages'</span>: [<span class="st">'simple_file_manager'</span>, <span class="st">'flutter_pdf_designer'</span>],
+};`,
+skills:`{
+  <span class="pr">"languages"</span>: [<span class="st">"Dart"</span>, <span class="st">"Kotlin"</span>, <span class="st">"Java"</span>],
+  <span class="pr">"frameworks"</span>: [<span class="st">"Flutter"</span>, <span class="st">"Jetpack Compose"</span>, <span class="st">"BloC"</span>, <span class="st">"GetX"</span>, <span class="st">"Provider"</span>],
+  <span class="pr">"backend"</span>: [<span class="st">"Firebase"</span>, <span class="st">"Firestore"</span>, <span class="st">"SQLite"</span>],
+  <span class="pr">"maps"</span>: [<span class="st">"Google Maps"</span>, <span class="st">"HERE Maps"</span>],
+  <span class="pr">"principles"</span>: [<span class="st">"SOLID"</span>, <span class="st">"Clean Architecture"</span>, <span class="st">"Agile"</span>],
+  <span class="pr">"ai"</span>: [<span class="st">"MCP"</span>, <span class="st">"Spec-driven dev"</span>, <span class="st">"Claude"</span>, <span class="st">"Cursor"</span>]
+}`,
+contact:`<span class="kw"># Let's work together</span>
+
+<span class="pr">- Hiring?</span>      Download CV · LinkedIn
+<span class="pr">- Need an app?</span> WhatsApp · Email
+<span class="pr">- Code:</span>         github.com/A7MeDG0L0L`
+};
+const names={about:'about_me.dart',exp:'experience.dart',proj:'projects.dart',skills:'skills.json',contact:'contact.md'};
+const show=k=>{document.getElementById('code').innerHTML=L(C[k]);document.getElementById('tabname').textContent=names[k];
+  document.querySelectorAll('.f[data-c]').forEach(f=>f.classList.toggle('on',f.dataset.c===k))};
+document.querySelectorAll('.f[data-c]').forEach(f=>f.onclick=()=>show(f.dataset.c));
+show('about');
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource/ibm-plex-sans-arabic/400.css';
+import '@fontsource/ibm-plex-sans-arabic/600.css';
+import '@fontsource/ibm-plex-sans-arabic/700.css';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  locale: 'en' | 'ar';
+  altPath: string;
+  ogImage?: string;
+}
+const { title, description, locale } = Astro.props;
+const dir = locale === 'ar' ? 'rtl' : 'ltr';
+---
+<!doctype html>
+<html lang={locale} dir={dir} data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+    </script>
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

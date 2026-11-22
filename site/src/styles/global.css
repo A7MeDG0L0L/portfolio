@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root,
+:root[data-theme="dark"] {
+  --bg: #0b0d12;
+  --panel: #12151d;
+  --panel-2: #181c26;
+  --line: #252a37;
+  --text: #e9ecf3;
+  --muted: #8b93a7;
+  --accent: #54c5f8;
+  --accent2: #7c5cff;
+  --ok: #3ddc97;
+  --on-text: #0b0d12;
+  --glow-a: rgba(124, 92, 255, 0.18);
+  --glow-b: rgba(84, 197, 248, 0.1);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f7f8fb;
+  --panel: #ffffff;
+  --panel-2: #f0f2f7;
+  --line: #e3e6ee;
+  --text: #0b0d12;
+  --muted: #4a5163;
+  --accent: #0b7fb5;
+  --accent2: #5b3fe0;
+  --ok: #0f9d63;
+  --on-text: #ffffff;
+  --glow-a: rgba(124, 92, 255, 0.12);
+  --glow-b: rgba(84, 197, 248, 0.12);
+  color-scheme: light;
+}
+
+@theme {
+  --font-sans: "Inter Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-arabic: "IBM Plex Sans Arabic", Tahoma, sans-serif;
+}
+
+html { background: var(--bg); color: var(--text); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+html:lang(ar) { font-family: var(--font-arabic); }
+body { margin: 0; min-height: 100vh; background:
+  radial-gradient(1200px 600px at 75% 0%, var(--glow-a), transparent 60%),
+  radial-gradient(900px 500px at 10% 30%, var(--glow-b), transparent 60%),
+  var(--bg); }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.grad { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.container-x { max-width: 1180px; margin-inline: auto; padding-inline: 24px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
