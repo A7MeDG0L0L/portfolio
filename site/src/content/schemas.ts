@@ -33,6 +33,7 @@ export const profileSchema = z.object({
     companiesText: z.string(),
     clientsTitle: z.string(),
     clientsText: z.string(),
+    stack: z.array(z.string()),
   }),
 });
 

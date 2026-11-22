@@ -8,7 +8,7 @@ interface Props { locale: Locale }
 const { locale } = Astro.props;
 const p = await getProfile(locale);
 ---
-<section class="hero container-x" data-testid="hero" aria-labelledby="hero-title">
+<section id="hero" class="hero container-x" data-testid="hero" aria-labelledby="hero-title">
   <div class="copy">
     {p.available && <p class="pill"><span class="dot" aria-hidden="true"></span>{p.availabilityText}</p>}
     <h1 id="hero-title">{p.headline} <span class="grad">{p.headlineAccent}</span></h1>

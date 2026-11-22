@@ -2,6 +2,11 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/hero/Hero.astro';
+import QuickLook from '../components/quicklook/QuickLook.astro';
+import Work from '../components/sections/Work.astro';
+import Experience from '../components/sections/Experience.astro';
+import Skills from '../components/sections/Skills.astro';
+import Contact from '../components/sections/Contact.astro';
 import { getProfile } from '../lib/content';
 const locale = 'en';
 const p = await getProfile(locale);
@@ -10,5 +15,10 @@ const p = await getProfile(locale);
   <Nav locale={locale} />
   <main id="main">
     <Hero locale={locale} />
+    <QuickLook locale={locale} />
+    <Work locale={locale} />
+    <Experience locale={locale} />
+    <Skills locale={locale} />
+    <Contact locale={locale} />
   </main>
 </Base>

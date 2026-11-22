@@ -1,0 +1,38 @@
+---
+import { getExperience } from '../../lib/content';
+import { formatMonth } from '../../lib/format';
+import { t } from '../../i18n/utils';
+import type { Locale } from '../../i18n/locales';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const { roles } = await getExperience(locale);
+---
+<section id="experience" class="section container-x" aria-labelledby="exp-title">
+  <p class="eyebrow">{t(locale, 'navExperience')}</p>
+  <h2 class="h2" id="exp-title">{t(locale, 'experience')}</h2>
+  <ol class="roles">
+    {roles.map((r, i) => (
+      <li class="role reveal" data-testid="role">
+        <span class:list={['dot', { cur: r.end === null }]} aria-hidden="true"></span>
+        <p class="dates">{formatMonth(r.start, locale)} – {r.end ? formatMonth(r.end, locale) : t(locale, 'present')}</p>
+        <h3>{r.title} · {r.url ? <a href={r.url} target="_blank" rel="noopener">{r.company}</a> : r.company}</h3>
+        <details open={i === 0}>
+          <summary>{t(locale, 'showDetails')}</summary>
+          <ul>{r.bullets.map((b) => <li>{b}</li>)}</ul>
+        </details>
+      </li>
+    ))}
+  </ol>
+</section>
+<style>
+  .roles { list-style: none; margin: 0; padding: 0; border-inline-start: 2px solid var(--line); }
+  .role { position: relative; padding: 0 0 28px 28px; padding-inline-start: 28px; padding-inline-end: 0; }
+  .dot { position: absolute; inset-inline-start: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--line); border: 2px solid var(--bg); }
+  .dot.cur { background: var(--accent); }
+  .dates { font-size: 13px; color: var(--muted); margin: 0; }
+  h3 { font-size: 18px; margin: 4px 0 8px; }
+  h3 a { color: var(--accent); }
+  summary { cursor: pointer; color: var(--muted); font-size: 14px; width: fit-content; }
+  summary:hover { color: var(--text); }
+  details ul { margin: 10px 0 0; padding-inline-start: 18px; color: var(--muted); line-height: 1.6; font-size: 15px; max-width: 760px; }
+</style>

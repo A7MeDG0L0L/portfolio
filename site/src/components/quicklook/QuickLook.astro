@@ -1,0 +1,115 @@
+---
+import { getProfile, getExperience } from '../../lib/content';
+import { waLink, mailLink } from '../../lib/links';
+import { yearSpan } from '../../lib/format';
+import { t, localizePath } from '../../i18n/utils';
+import type { Locale } from '../../i18n/locales';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const p = await getProfile(locale);
+const q = p.quickLook;
+const { roles } = await getExperience(locale);
+const current = roles[0];
+const timeline = roles.filter((r) => r.inTimeline).reverse();
+const shortName = (c: string) => c.replace(/\s+International LLC$|\.com$|\.co$/i, '');
+---
+<section id="quick-look" class="section container-x" aria-labelledby="ql-title">
+  <p class="eyebrow" id="ql-title">{t(locale, 'quickLook')} · {t(locale, 'quickLookHint')}</p>
+  <div class="bento">
+    {p.stats.map((s) => (
+      <div class="tile stat reveal"><div class="n">{s.value}</div><p>{s.label}</p></div>
+    ))}
+
+    <a class="tile now reveal" href={`${localizePath('/', locale)}#experience`} data-expand data-testid="tile-now">
+      <span class="arrow" aria-hidden="true">↗</span>
+      <p class="eyebrow">{q.nowLabel}</p>
+      <h3>{q.nowTitle}</h3>
+      <p>{q.nowText}</p>
+      <ul class="full">{current.bullets.map((b) => <li>{b}</li>)}</ul>
+      <span class="sr-only">{t(locale, 'expand')}</span>
+    </a>
+
+    <div class="tile stack reveal">
+      <p class="eyebrow">{t(locale, 'stack')}</p>
+      <ul class="chips">{q.stack.map((s) => <li>{s}</li>)}</ul>
+    </div>
+
+    <div class="tile path reveal">
+      <p class="eyebrow">{t(locale, 'path')}</p>
+      <ol class="timeline">
+        {timeline.map((r) => (
+          <li data-testid="timeline-item" class:list={{ cur: r.end === null }}>
+            <b>{shortName(r.company)}</b><span>{yearSpan(r.start, r.end, t(locale, 'now'))}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="tile ai reveal">
+      <h3>{q.aiTitle}</h3>
+      <p>{q.aiText}</p>
+    </div>
+
+    <div class="tile companies reveal">
+      <p class="eyebrow">{t(locale, 'forCompanies')}</p>
+      <h3>{q.companiesTitle}</h3>
+      <p>{q.companiesText}</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/cv/Ahmed-Galal-CV.pdf" download="Ahmed-Galal-CV.pdf">{t(locale, 'downloadCv')}</a>
+        <a class="btn btn-ghost" href={p.linkedin} target="_blank" rel="noopener">{t(locale, 'linkedin')}</a>
+      </div>
+    </div>
+
+    <div class="tile clients reveal">
+      <p class="eyebrow">{t(locale, 'forClients')}</p>
+      <h3>{q.clientsTitle} <span aria-hidden="true" class="flip">→</span></h3>
+      <p>{q.clientsText}</p>
+      <div class="btn-row">
+        <a class="btn btn-dark" href={waLink(p.whatsapp, p.waMessage)} target="_blank" rel="noopener">{t(locale, 'whatsapp')}</a>
+        <a class="btn btn-line" href={mailLink(p.email, t(locale, 'emailSubject'))}>{t(locale, 'email')}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import './tiles.ts';
+</script>
+
+<style>
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: minmax(130px, auto); gap: 14px; margin-top: 14px; }
+  .tile { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 22px; overflow: hidden; transition: border-color .2s, transform .2s; }
+  .tile h3 { font-size: 24px; letter-spacing: -.02em; line-height: 1.15; margin: 8px 0; }
+  .tile p { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0; }
+  .tile .eyebrow { margin: 0; }
+  .stat { grid-column: span 2; }
+  .stat .n { font-size: 32px; font-weight: 750; letter-spacing: -.03em; }
+  .now { grid-column: span 3; grid-row: span 2; cursor: pointer; }
+  .now:hover { border-color: var(--muted); transform: translateY(-2px); }
+  .arrow { position: absolute; top: 20px; inset-inline-end: 22px; color: var(--accent); }
+  .full { display: none; margin: 14px 0 0; padding-inline-start: 18px; color: var(--text); font-size: 14px; line-height: 1.6; }
+  .now:global(.big) { grid-column: 1 / -1; }
+  .now:global(.big) .full { display: block; }
+  .stack { grid-column: span 3; grid-row: span 2; }
+  .stack .chips { margin-top: 14px; }
+  .path { grid-column: span 4; grid-row: span 2; }
+  .timeline { display: flex; gap: 6px; margin: 18px 0 0; padding: 0; list-style: none; }
+  .timeline li { flex: 1; border-top: 3px solid var(--line); padding-top: 8px; font-size: 12px; color: var(--muted); min-width: 0; }
+  .timeline li.cur { border-color: var(--accent); }
+  .timeline b { display: block; color: var(--text); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ai { grid-column: span 2; grid-row: span 2; background: linear-gradient(160deg, color-mix(in srgb, var(--accent2) 18%, var(--panel)), var(--panel)); }
+  .companies { grid-column: span 3; grid-row: span 2; }
+  .companies .btn-row, .clients .btn-row { margin-top: 16px; }
+  .clients { grid-column: span 3; grid-row: span 2; background: var(--text); color: var(--on-text); border-color: var(--text); }
+  .clients p, .clients .eyebrow { color: color-mix(in srgb, var(--on-text) 70%, transparent); }
+  .btn-dark { background: var(--on-text); color: var(--text); }
+  .btn-line { border: 1px solid color-mix(in srgb, var(--on-text) 30%, transparent); }
+  @media (max-width: 899px) {
+    .bento { grid-template-columns: repeat(2, 1fr); }
+    .tile { grid-column: span 2 !important; grid-row: auto !important; }
+    .stat { grid-column: span 1 !important; }
+    .stat:last-of-type { grid-column: span 2 !important; }
+    .timeline { flex-wrap: wrap; }
+    .timeline li { flex: 1 1 30%; }
+  }
+</style>

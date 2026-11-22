@@ -1,0 +1,26 @@
+---
+import Cover from '../casestudy/Cover.astro';
+import type { Project } from '../../lib/projects';
+import { localizePath } from '../../i18n/utils';
+import type { Locale } from '../../i18n/locales';
+interface Props { project: Project; locale: Locale }
+const { project, locale } = Astro.props;
+const d = project.data;
+---
+<a class="pcard reveal" href={localizePath(`/work/${d.slug}/`, locale)} data-testid="project-card">
+  <Cover project={project} size="card" />
+  <div class="body">
+    <p class="meta">{[d.company, d.dates].filter(Boolean).join(' · ')}</p>
+    <h3>{d.title}</h3>
+    <p class="sum">{d.summary}</p>
+    <ul class="chips">{d.stack.slice(0, 4).map((s) => <li>{s}</li>)}</ul>
+  </div>
+</a>
+<style>
+  .pcard { display: flex; flex-direction: column; gap: 14px; padding: 12px; border-radius: 24px; background: var(--panel); border: 1px solid var(--line); transition: transform .2s, border-color .2s; }
+  .pcard:hover { transform: translateY(-3px); border-color: var(--muted); }
+  .body { padding: 2px 8px 10px; }
+  .meta { font-size: 12px; color: var(--muted); margin: 0; }
+  h3 { font-size: 20px; margin: 4px 0 6px; letter-spacing: -.01em; }
+  .sum { color: var(--muted); font-size: 14px; line-height: 1.5; margin: 0 0 12px; }
+</style>

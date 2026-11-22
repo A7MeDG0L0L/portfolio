@@ -32,6 +32,7 @@
     "companiesTitle": "Hiring a Flutter developer?",
     "companiesText": "Native-to-Flutter migrations, Clean Architecture, performance work and close collaboration with product, design and QA.",
     "clientsTitle": "Need an app built?",
-    "clientsText": "From idea to store: Android & iOS, Arabic & English. Message me on WhatsApp or email."
+    "clientsText": "From idea to store: Android & iOS, Arabic & English. Message me on WhatsApp or email.",
+    "stack": ["Flutter", "Dart", "Kotlin", "Jetpack Compose", "BloC", "Clean Architecture", "Firebase", "HERE Maps", "SQLite"]
   }
 }

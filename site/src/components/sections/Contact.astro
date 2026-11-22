@@ -1,0 +1,36 @@
+---
+import { getProfile } from '../../lib/content';
+import { waLink, mailLink } from '../../lib/links';
+import { t } from '../../i18n/utils';
+import type { Locale } from '../../i18n/locales';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const p = await getProfile(locale);
+const year = new Date().getFullYear();
+---
+<section id="contact" class="section container-x" aria-labelledby="contact-title">
+  <div class="box reveal">
+    <h2 class="h2" id="contact-title">{t(locale, 'contactTitle')}</h2>
+    <p class="sub">{t(locale, 'contactText')}</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/cv/Ahmed-Galal-CV.pdf" download="Ahmed-Galal-CV.pdf">{p.ctaHire}</a>
+      <a class="btn btn-ghost" href={waLink(p.whatsapp, p.waMessage)} target="_blank" rel="noopener">{p.ctaBuild}</a>
+    </div>
+    <ul class="links">
+      <li><a href={mailLink(p.email, t(locale, 'emailSubject'))}><span>{t(locale, 'email')}</span>{p.email}</a></li>
+      <li><a href={waLink(p.whatsapp, p.waMessage)} target="_blank" rel="noopener"><span>{t(locale, 'whatsapp')}</span><bdi>{p.whatsapp}</bdi></a></li>
+      <li><a href={p.linkedin} target="_blank" rel="noopener"><span>{t(locale, 'linkedin')}</span>/in/a7medg0l0l</a></li>
+      <li><a href={p.github} target="_blank" rel="noopener"><span>{t(locale, 'github')}</span>A7MeDG0L0L</a></li>
+    </ul>
+  </div>
+  <footer class="foot"><span>© {year} {p.name}</span><span>{t(locale, 'footerNote')}</span></footer>
+</section>
+<style>
+  .box { border-radius: 32px; padding: clamp(28px, 5vw, 56px); border: 1px solid var(--line);
+    background: radial-gradient(600px 300px at 90% 0%, color-mix(in srgb, var(--accent2) 22%, transparent), transparent 70%), var(--panel); }
+  .links { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+  .links a { display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--line); font-size: 15px; overflow-wrap: anywhere; }
+  .links a:hover { border-color: var(--muted); }
+  .links span { font-size: 12px; color: var(--muted); }
+  .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 13px; padding-top: 28px; }
+</style>

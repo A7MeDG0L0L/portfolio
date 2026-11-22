@@ -1,0 +1,19 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import { getProjects, hasCaseStudyPage } from '../../lib/projects';
+import { t } from '../../i18n/utils';
+import type { Locale } from '../../i18n/locales';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const projects = (await getProjects(locale)).filter(hasCaseStudyPage);
+---
+<section id="work" class="section container-x" aria-labelledby="work-title">
+  <p class="eyebrow">{t(locale, 'navWork')}</p>
+  <h2 class="h2" id="work-title">{t(locale, 'work')}</h2>
+  <p class="sub">{t(locale, 'workIntro')}</p>
+  <div class="grid">{projects.map((p) => <ProjectCard project={p} locale={locale} />)}</div>
+</section>
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  @media (max-width: 400px) { .grid { grid-template-columns: 1fr; } }
+</style>
