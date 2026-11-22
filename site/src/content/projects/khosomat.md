@@ -1,5 +1,6 @@
 ---
 title: Khosomat
+short: "Khosomat"
 slug: khosomat
 type: app
 company: Khosomat.com

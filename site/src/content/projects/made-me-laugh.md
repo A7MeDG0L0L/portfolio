@@ -1,5 +1,6 @@
 ---
 title: Made Me Laugh
+short: "Laugh"
 slug: made-me-laugh
 type: app
 dates: Side project

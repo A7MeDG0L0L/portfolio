@@ -1,0 +1,73 @@
+---
+import AppIcon from './AppIcon.astro';
+import PhoneSheet from './PhoneSheet.astro';
+import { getProjects } from '../../lib/projects';
+import { getProfile } from '../../lib/content';
+import { waLink } from '../../lib/links';
+import { t, localizePath } from '../../i18n/utils';
+import type { Locale } from '../../i18n/locales';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const projects = await getProjects(locale);
+const profile = await getProfile(locale);
+const home = localizePath('/', locale);
+const dock = [
+  { href: `${home}#quick-look`, label: t(locale, 'dockAbout'), bg: '#2a2f3c', svg: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>' },
+  { href: `${home}#experience`, label: t(locale, 'dockExperience'), bg: '#2a2f3c', svg: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>' },
+  { href: waLink(profile.whatsapp, profile.waMessage), label: t(locale, 'whatsapp'), bg: '#25d366', svg: '<path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/>', ext: true },
+  { href: profile.linkedin, label: t(locale, 'linkedin'), bg: '#0a66c2', svg: '<path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 10v7"/>', ext: true },
+];
+---
+<div class="phone-wrap">
+  <div class="phone">
+    <div class="screen">
+      <div class="island" aria-hidden="true"></div>
+      <div class="status" aria-hidden="true"><span>9:41</span><span>5G ▮▮▮</span></div>
+      <div class="widget">
+        <div class="sm">{t(locale, 'phoneWidgetLabel')}</div>
+        <div class="big">{profile.stats[0]?.value}</div>
+        <div class="sm">{profile.focusLine}</div>
+      </div>
+      <div class="icons">
+        {projects.map((p) => <AppIcon project={p} locale={locale} short={p.data.short} />)}
+      </div>
+      <nav class="dock" aria-label={t(locale, 'navContact')}>
+        {dock.map((d) => (
+          <a href={d.href} aria-label={d.label} title={d.label} style={`background:${d.bg}`} {...(d.ext ? { target: '_blank', rel: 'noopener' } : {})}>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={d.svg} />
+          </a>
+        ))}
+      </nav>
+      {projects.map((p) => <PhoneSheet project={p} locale={locale} />)}
+    </div>
+  </div>
+  <p class="hint">{t(locale, 'phoneHint')}</p>
+</div>
+
+<script>
+  import './phone.ts';
+</script>
+
+<style>
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .phone { width: 310px; height: 630px; border-radius: 52px; background: #05060a; padding: 12px; position: relative;
+    box-shadow: 0 0 0 2px #2a2f3c, 0 40px 80px -20px rgba(0,0,0,.7), 0 0 120px -30px rgba(124,92,255,.5); }
+  .screen { width: 100%; height: 100%; border-radius: 42px; overflow: hidden; position: relative; color: #e9ecf3;
+    background: linear-gradient(160deg, #1c2340 0%, #2a1b4d 55%, #0f2a3d 100%); }
+  .island { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 96px; height: 28px; background: #000; border-radius: 20px; z-index: 8; }
+  .status { display: flex; justify-content: space-between; padding: 16px 26px 0; font-size: 13px; font-weight: 600; direction: ltr; }
+  .widget { margin: 28px 18px 18px; padding: 16px; border-radius: 22px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); }
+  .widget .big { font-size: 30px; font-weight: 750; letter-spacing: -.02em; }
+  .widget .sm { font-size: 12px; color: #b9c0d4; }
+  .icons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px 10px; padding: 4px 18px; }
+  .dock { position: absolute; bottom: 14px; left: 14px; right: 14px; height: 78px; border-radius: 28px; background: rgba(255,255,255,.12); display: flex; justify-content: space-around; align-items: center; }
+  .dock a { width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center; }
+  .hint { font-size: 13px; color: var(--muted); margin: 0; text-align: center; max-width: 280px; }
+
+  @media (max-width: 899px) {
+    .phone, .screen { width: auto; height: auto; padding: 0; background: none; box-shadow: none; border-radius: 0; overflow: visible; }
+    .island, .status, .widget, .dock { display: none; }
+    .icons { padding: 0; gap: 20px 8px; }
+    .hint { order: -1; }
+  }
+</style>

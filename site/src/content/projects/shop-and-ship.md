@@ -1,5 +1,6 @@
 ---
 title: Shop & Ship
+short: "Shop&Ship"
 slug: shop-and-ship
 type: app
 company: Aramex

@@ -1,0 +1,42 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import LangToggle from './LangToggle.astro';
+import { t, localizePath } from '../i18n/utils';
+import type { Locale } from '../i18n/locales';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const home = localizePath('/', locale);
+const links = [
+  { href: `${home}#work`, label: t(locale, 'navWork') },
+  { href: `${home}#experience`, label: t(locale, 'navExperience') },
+  { href: `${home}#contact`, label: t(locale, 'navContact') },
+];
+---
+<a class="skip" href="#main">{t(locale, 'skipToContent')}</a>
+<header class="nav">
+  <div class="container-x row">
+    <a class="logo" href={home} aria-label="Ahmed Galal">
+      <span class="mark">AG</span><span class="name">Ahmed Galal</span>
+    </a>
+    <nav aria-label="Main">
+      <ul>{links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+    </nav>
+    <div class="tools">
+      <LangToggle />
+      <ThemeToggle label={t(locale, 'themeToggle')} />
+    </div>
+  </div>
+</header>
+<style>
+  .skip { position: absolute; inset-inline-start: 12px; top: -60px; z-index: 200; background: var(--text); color: var(--on-text); padding: 10px 14px; border-radius: 10px; }
+  .skip:focus { top: 12px; }
+  .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); background: color-mix(in srgb, var(--bg) 72%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+  .row { display: flex; align-items: center; gap: 20px; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  .mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; color: #fff; font-size: 13px; background: linear-gradient(135deg, #54c5f8, #7c5cff); }
+  nav { margin-inline-start: auto; }
+  ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: 14px; color: var(--muted); }
+  ul a:hover { color: var(--text); }
+  .tools { display: flex; gap: 8px; }
+  @media (max-width: 640px) { nav { display: none; } .tools { margin-inline-start: auto; } .name { display: none; } }
+</style>

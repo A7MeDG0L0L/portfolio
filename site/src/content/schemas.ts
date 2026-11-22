@@ -38,6 +38,7 @@ export const profileSchema = z.object({
 
 export const projectSchema = z.object({
   title: z.string(),
+  short: z.string().max(12),
   slug: z.string().regex(/^[a-z0-9-]+$/),
   type: z.enum(['app', 'package', 'approach']),
   company: z.string().optional(),

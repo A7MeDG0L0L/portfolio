@@ -1,5 +1,6 @@
 ---
 title: Daily Images by NASA
+short: "NASA"
 slug: nasa-daily
 type: app
 dates: Side project

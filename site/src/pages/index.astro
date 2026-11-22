@@ -1,7 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/hero/Hero.astro';
+import { getProfile } from '../lib/content';
+const locale = 'en';
+const p = await getProfile(locale);
 ---
-<Base title="Ahmed Galal — Mobile Application Developer" description="Flutter & Android developer in Cairo." locale="en" altPath="/ar/">
-  <main class="container-x"><h1>Ahmed Galal</h1><ThemeToggle label="Switch theme" /></main>
+<Base title={`${p.name} — ${p.title}`} description={p.intro} locale={locale} altPath="/ar/">
+  <Nav locale={locale} />
+  <main id="main">
+    <Hero locale={locale} />
+  </main>
 </Base>

@@ -1,5 +1,6 @@
 ---
 title: AI-Native Development
+short: "AI Dev"
 slug: ai-dev
 type: approach
 dates: How I work

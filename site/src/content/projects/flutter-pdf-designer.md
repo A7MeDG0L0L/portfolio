@@ -1,5 +1,6 @@
 ---
 title: Flutter PDF Designer
+short: "PDF"
 slug: flutter-pdf-designer
 type: package
 company: Tecfy.co

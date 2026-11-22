@@ -1,0 +1,44 @@
+---
+import type { Project } from '../../lib/projects';
+import { hasCaseStudyPage } from '../../lib/projects';
+import { localizePath, t } from '../../i18n/utils';
+import type { Locale } from '../../i18n/locales';
+interface Props { project: Project; locale: Locale }
+const { project, locale } = Astro.props;
+const d = project.data;
+const meta = [d.company, d.dates].filter(Boolean).join(' · ');
+---
+<div class="sheet" id={`sheet-${d.slug}`} role="dialog" aria-modal="true" aria-labelledby={`sheet-title-${d.slug}`} hidden>
+  <button type="button" class="back" data-close>
+    <span aria-hidden="true" class="chev">‹</span> {t(locale, 'back')}
+  </button>
+  <div class="cover" style={`background:${d.icon.bg};color:${d.icon.fg ?? '#fff'}`} aria-hidden="true">{d.icon.label}</div>
+  <h3 id={`sheet-title-${d.slug}`} tabindex="-1">{d.title}</h3>
+  {meta && <p class="meta">{meta}</p>}
+  <ul class="chips" aria-label={t(locale, 'stack')}>{d.stack.map((s) => <li>{s}</li>)}</ul>
+  <ul class="bullets">{d.highlights.map((h) => <li>{h}</li>)}</ul>
+  {hasCaseStudyPage(project) && (
+    <a class="more" href={localizePath(`/work/${d.slug}/`, locale)}>{t(locale, 'fullCaseStudy')} <span aria-hidden="true" class="arrow">→</span></a>
+  )}
+</div>
+<style>
+  .sheet { position: absolute; inset: 0; z-index: 6; background: #0d1018; color: #e9ecf3; overflow-y: auto; padding: 54px 18px 24px; transform: translateY(100%); transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+  .sheet:global(.open) { transform: none; }
+  .back { background: none; border: 0; color: #54c5f8; font: inherit; font-size: 13px; margin-bottom: 14px; cursor: pointer; padding: 4px 0; }
+  .cover { height: 120px; border-radius: 18px; margin-bottom: 14px; display: grid; place-items: center; font-size: 34px; font-weight: 800; }
+  h3 { font-size: 22px; letter-spacing: -.02em; margin: 0; outline: none; }
+  .meta { font-size: 12px; color: #8b93a7; margin: 4px 0 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0 0 14px; }
+  .chips li { font-size: 11px; padding: 4px 9px; border-radius: 999px; background: rgba(84,197,248,.1); color: #54c5f8; border: 1px solid rgba(84,197,248,.2); }
+  .bullets { list-style: none; display: grid; gap: 8px; padding: 0; margin: 0; }
+  .bullets li { font-size: 13px; line-height: 1.45; color: #cfd5e3; padding-inline-start: 16px; position: relative; }
+  .bullets li::before { content: ""; position: absolute; inset-inline-start: 0; top: 7px; width: 6px; height: 6px; border-radius: 2px; background: #7c5cff; }
+  .more { display: inline-flex; gap: 6px; margin-top: 18px; font-weight: 600; font-size: 14px; color: #54c5f8; }
+  :global([dir="rtl"]) .chev, :global([dir="rtl"]) .arrow { display: inline-block; transform: scaleX(-1); }
+  @media (max-width: 899px) {
+    .sheet { position: fixed; inset: 0; z-index: 100; padding: 28px 20px 40px; }
+    .cover { height: 160px; }
+    h3 { font-size: 28px; }
+    .bullets li { font-size: 15px; }
+  }
+</style>

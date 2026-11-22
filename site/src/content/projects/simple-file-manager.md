@@ -1,5 +1,6 @@
 ---
 title: Simple File Manager
+short: "Files"
 slug: simple-file-manager
 type: package
 dates: Flutter package

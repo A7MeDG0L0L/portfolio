@@ -1,0 +1,12 @@
+---
+import { altLocalePath, t, getLocaleFromUrl } from '../i18n/utils';
+const locale = getLocaleFromUrl(Astro.url);
+const other = locale === 'en' ? 'ar' : 'en';
+---
+<a class="lang" href={altLocalePath(Astro.url)} hreflang={other} lang={other} aria-label={t(locale, 'langToggleLabel')} data-testid="lang-toggle">
+  {t(locale, 'langToggle')}
+</a>
+<style>
+  .lang { display: inline-grid; place-items: center; min-width: 38px; height: 38px; padding-inline: 10px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel); font-weight: 600; font-size: 14px; }
+  .lang:hover { border-color: var(--muted); }
+</style>
