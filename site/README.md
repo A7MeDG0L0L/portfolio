@@ -31,7 +31,7 @@ All copy lives in `src/content/` and `src/i18n/ui.ts`. Edit the file, rebuild, d
 | Skills | `src/content/skills/en.json` + `ar.json` |
 | Certifications | `src/content/certifications/en.json` + `ar.json` |
 | Buttons, section titles, small UI labels | `src/i18n/ui.ts` |
-| The downloadable CV | replace `public/cv/Ahmed-Galal-CV.pdf` (keep the name) |
+| The downloadable CV | replace `public/cv/Ahmed-Galal-CV.pdf` (keep the name), then run `npm run cv:pages` to refresh the preview images (macOS) |
 
 Rules the tests enforce:
 - **No numbers like "40%" or "3x" in copy** unless they are in a project's `metrics:` list with `confirmedBy: ahmed`.

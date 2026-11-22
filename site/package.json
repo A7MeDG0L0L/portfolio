@@ -13,7 +13,8 @@
     "test": "vitest run",
     "e2e": "playwright test",
     "lhci": "lhci autorun",
-    "check": "astro check"
+    "check": "astro check",
+    "cv:pages": "node scripts/cv-pages.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.6",
