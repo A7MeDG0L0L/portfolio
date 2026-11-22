@@ -13,9 +13,11 @@ test('hero shows headline and both CTAs', async ({ page }) => {
   expect(await build.getAttribute('href')).toMatch(/^https:\/\/wa\.me\/201119369127/);
 });
 
-test('11 app icons', async ({ page }) => {
+test('12 app icons, Made Me Laugh hidden from the phone', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByTestId('hero').getByTestId('app-icon')).toHaveCount(11);
+  await expect(page.getByTestId('hero').getByTestId('app-icon')).toHaveCount(12);
+  await expect(page.getByTestId('hero').locator('[data-sheet="made-me-laugh"]')).toHaveCount(0);
+  await expect(page.locator('#work a[href="/work/made-me-laugh/"]')).toHaveCount(1);
 });
 
 test('click opens sheet in phone, back closes', async ({ page }, info) => {
@@ -90,7 +92,7 @@ test('phone frame is hidden on a real phone (icons only)', async ({ page }, info
   await page.goto('/');
   const box = await page.getByTestId('hero').locator('.phone').boundingBox();
   expect(box?.height).not.toBe(630);
-  await expect(page.getByTestId('hero').getByTestId('app-icon')).toHaveCount(11);
+  await expect(page.getByTestId('hero').getByTestId('app-icon')).toHaveCount(12);
 });
 
 test('app icons show real artwork', async ({ page }) => {

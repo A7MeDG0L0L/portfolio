@@ -5,7 +5,7 @@ slug: shop-and-ship
 type: app
 company: أرامكس
 dates: 2023 – 2025
-order: 1
+order: 3
 icon: { label: "S&S", bg: "#e1251b", image: "/icons/shop-and-ship.png" }
 summary: أعدت بناء تطبيق Shop & Ship من أرامكس من Native إلى Flutter.
 problem: إعادة بناء تطبيق Shop & Ship الحالي بـ Flutter على معمارية نظيفة وسهلة الصيانة.

@@ -1,6 +1,6 @@
 ---
 title: Bluworks Tablet App
-short: "Bluworks"
+short: "BW Tablet"
 slug: bluworks-tablet
 type: app
 company: Bluworks

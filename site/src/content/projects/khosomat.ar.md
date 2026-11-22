@@ -5,7 +5,7 @@ slug: khosomat
 type: app
 company: Khosomat.com
 dates: 2021 – 2022
-order: 3
+order: 5
 icon: { label: "K", bg: "#ff8a00", image: "/icons/khosomat.png" }
 summary: تطبيق تجارة إلكترونية مبني من الصفر على WooCommerce API.
 problem: بناء تطبيق تجارة إلكترونية كامل من الصفر على WooCommerce API.

@@ -4,7 +4,7 @@ short: "Convertify"
 slug: convertify
 type: app
 dates: Side project
-order: 4
+order: 6
 icon: { label: "⇄", bg: "#111318", image: "/icons/convertify.png" }
 summary: Unit and live currency converter that works offline, in Arabic & English.
 highlights:

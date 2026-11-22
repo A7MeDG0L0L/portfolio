@@ -1,6 +1,6 @@
 ---
 title: تطبيق Bluworks للتابلت
-short: "Bluworks"
+short: "BW Tablet"
 slug: bluworks-tablet
 type: app
 company: Bluworks

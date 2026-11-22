@@ -5,7 +5,7 @@ slug: shop-and-ship
 type: app
 company: Aramex
 dates: 2023 – 2025
-order: 1
+order: 3
 icon: { label: "S&S", bg: "#e1251b", image: "/icons/shop-and-ship.png" }
 summary: Revamped Aramex's Shop & Ship app from native to Flutter.
 problem: Rebuild the existing native Shop & Ship app in Flutter on a clean, maintainable architecture.

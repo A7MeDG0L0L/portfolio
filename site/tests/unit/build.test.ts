@@ -4,7 +4,7 @@ import path from 'node:path';
 
 // Run after `npm run build`.
 const dist = path.resolve(__dirname, '../../dist');
-const slugs = ['shop-and-ship', 'bluworks-tablet', 'khosomat', 'convertify', 'xo-clash', 'daily-tips', 'nasa-daily', 'made-me-laugh', 'simple-file-manager', 'flutter-pdf-designer'];
+const slugs = ['bluworks', 'bluworks-tablet', 'shop-and-ship', 'aramex-mobile', 'khosomat', 'convertify', 'xo-clash', 'daily-tips', 'nasa-daily', 'made-me-laugh', 'simple-file-manager', 'flutter-pdf-designer'];
 
 describe('build output', () => {
   it('has a case study page per project in both locales', () => {

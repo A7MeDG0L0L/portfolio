@@ -4,7 +4,7 @@ short: "ملفات"
 slug: simple-file-manager
 type: package
 dates: حزمة Flutter
-order: 9
+order: 11
 icon: { label: "▤", bg: "#3ddc97", fg: "#063d25" }
 summary: حزمة Flutter لإدارة الملفات، متاحة على pub.dev.
 highlights:
