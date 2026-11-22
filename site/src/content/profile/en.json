@@ -1,0 +1,37 @@
+{
+  "name": "Ahmed Galal",
+  "title": "Mobile Application Developer",
+  "location": "Cairo, Egypt",
+  "headline": "I build mobile apps that feel",
+  "headlineAccent": "fast, smooth & native.",
+  "intro": "Flutter & Android developer with 5 years of experience shipping apps for Aramex, Bluworks and growing startups. Offline-first, bilingual (Arabic/English) and built to scale.",
+  "available": true,
+  "availabilityText": "Open to full-time roles & freelance projects",
+  "email": "agalal819@gmail.com",
+  "whatsapp": "+201119369127",
+  "linkedin": "https://www.linkedin.com/in/a7medg0l0l/",
+  "github": "https://github.com/A7MeDG0L0L",
+  "ctaHire": "Hire me full-time",
+  "ctaHireHint": "CV",
+  "ctaBuild": "Build my app",
+  "ctaBuildHint": "WhatsApp",
+  "waMessage": "Hi Ahmed, I'd like to build an app",
+  "focusLine": "Flutter · Kotlin · Compose",
+  "wordmarks": ["aramex", "bluworks", "Tecfy", "Khosomat"],
+  "stats": [
+    { "value": "5 yrs", "label": "Flutter + Android Native" },
+    { "value": "AR / EN", "label": "Bilingual, RTL-ready UIs" },
+    { "value": "Offline-first", "label": "Apps that keep working without signal" }
+  ],
+  "quickLook": {
+    "nowLabel": "Now · Bluworks",
+    "nowTitle": "Offline tablet refactor + design system",
+    "nowText": "Improved startup time, reduced critical bugs and built a scalable design system for consistent UI.",
+    "aiTitle": "AI-native development",
+    "aiText": "Spec-driven development, MCP, and AI tools like Claude, Cursor and Copilot in my daily workflow.",
+    "companiesTitle": "Hiring a Flutter developer?",
+    "companiesText": "Native-to-Flutter migrations, Clean Architecture, performance work and close collaboration with product, design and QA.",
+    "clientsTitle": "Need an app built?",
+    "clientsText": "From idea to store: Android & iOS, Arabic & English. Message me on WhatsApp or email."
+  }
+}

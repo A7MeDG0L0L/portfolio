@@ -1,0 +1,11 @@
+{
+  "groups": [
+    { "name": "Languages", "items": ["Dart", "Kotlin", "Java", "HTML5", "CSS3"] },
+    { "name": "Frameworks & Tools", "items": ["Flutter", "Android SDK", "Jetpack Compose", "BloC", "GetX", "Provider", "Dio", "Firebase", "Google Maps", "HERE Maps", "Postman", "Swagger"] },
+    { "name": "Databases", "items": ["SQLite", "Sqflite", "Firebase Firestore"] },
+    { "name": "Version Control", "items": ["Git", "GitHub", "Azure DevOps"] },
+    { "name": "Principles", "items": ["OOP", "SOLID", "Clean Architecture", "Agile", "Scrum", "Kanban"] },
+    { "name": "Design", "items": ["Figma", "Adobe XD"] },
+    { "name": "AI", "items": ["Prompt Engineering", "Spec-Driven Development", "MCP", "Claude", "Cursor", "GitHub Copilot", "ChatGPT", "Google Gemini", "Speckit"] }
+  ]
+}

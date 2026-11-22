@@ -1,0 +1,49 @@
+{
+  "roles": [
+    {
+      "company": "Bluworks", "title": "Mobile Application Developer", "start": "2025-12", "end": null, "inTimeline": true, "url": "https://bluworks.io/",
+      "bullets": [
+        "Led a full refactor of a tablet application with online/offline support, improving stability and reducing critical bugs",
+        "Developed and delivered core business features, directly contributing to product value and user needs",
+        "Improved app startup time and overall performance through optimization and code restructuring",
+        "Diagnosed and resolved major issues in a legacy codebase, enhancing app reliability",
+        "Designed and implemented a scalable design system, ensuring consistent UI components and styling",
+        "Redesigned key screens and main content flows to improve user experience and usability"
+      ]
+    },
+    {
+      "company": "Aramex International LLC", "title": "Mobile Application Developer", "start": "2023-06", "end": "2025-12", "inTimeline": true,
+      "bullets": [
+        "Revamped Shop & Ship mobile app from Native to Flutter using Clean Architecture",
+        "Migrated multiple internal applications from Native to Flutter",
+        "Maintained and developed new Android Native applications (Java/Kotlin), including apps using Jetpack Compose",
+        "Integrated HERE Maps, Firebase (Analytics, Crashlytics, Messaging), and secure payment gateways",
+        "Built a bilingual (Arabic/English) responsive UI, optimized performance, and added offline support",
+        "Collaborated with Product Managers, UI/UX, QA and DevOps teams to align project goals"
+      ]
+    },
+    {
+      "company": "Tecfy.co", "title": "Flutter Developer", "start": "2022-04", "end": "2023-06", "inTimeline": true,
+      "bullets": [
+        "Developed and maintained custom Flutter packages to improve team productivity",
+        "Improved application performance and usability across core projects",
+        "Collaborated with designers to deliver engaging user experiences"
+      ]
+    },
+    {
+      "company": "The Sparks Foundation", "title": "Flutter Developer (Intern)", "start": "2022-05", "end": "2022-06", "inTimeline": false,
+      "bullets": ["Built a mobile app with BloC and local caching using Sqflite"]
+    },
+    {
+      "company": "Freelance", "title": "Flutter Developer (Freelance)", "start": "2022-01", "end": "2022-05", "inTimeline": true,
+      "bullets": ["Fixed critical bugs and developed new production features for client apps"]
+    },
+    {
+      "company": "Khosomat.com", "title": "Flutter Developer", "start": "2021-08", "end": "2022-01", "inTimeline": true,
+      "bullets": [
+        "Built Khosomat e-commerce app from scratch with BloC, Dio, SQLite, and WooCommerce API",
+        "Implemented localization, responsive design, and notifications"
+      ]
+    }
+  ]
+}

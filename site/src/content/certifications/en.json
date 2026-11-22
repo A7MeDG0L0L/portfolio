@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "title": "Flutter & Dart – The Complete Guide", "issuer": "Udemy", "start": "2021-03", "end": "2021-08", "url": "https://www.udemy.com/certificate/UC-0226d0f8-cbaa-42e4-a4f3-55052fac7a8f/",
+      "description": "Flutter widgets, state management (BloC, Provider), REST APIs and Firebase integration." },
+    { "title": "Flutter & Dart Development Course", "issuer": "Udemy", "start": "2021-04", "end": "2021-07", "url": "https://www.udemy.com/certificate/UC-7e9cdd76-1d94-491d-9b8c-7917a94d6d97/",
+      "description": "Building cross-platform apps from scratch with responsive UI, local databases (Sqflite) and API handling." },
+    { "title": "Certified Data Analysis Professional", "issuer": "Epsilon AI, Cairo", "start": "2022-06", "end": "2022-11",
+      "description": "Business intelligence with Excel, Power BI and Google Data Studio for better reporting and decisions." }
+  ]
+}
