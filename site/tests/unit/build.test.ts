@@ -33,3 +33,11 @@ describe('performance budget', () => {
     expect(total + inline).toBeLessThanOrEqual(102400);
   });
 });
+
+describe('CV preview pages', () => {
+  it('builds /cv/ and /ar/cv/ plus the three page images', () => {
+    expect(fs.existsSync(path.join(dist, 'cv', 'index.html'))).toBe(true);
+    expect(fs.existsSync(path.join(dist, 'ar', 'cv', 'index.html'))).toBe(true);
+    for (const n of [1, 2, 3]) expect(fs.existsSync(path.join(dist, 'cv', `page-${n}.webp`))).toBe(true);
+  });
+});

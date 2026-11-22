@@ -1,7 +1,7 @@
 ---
 import { getProfile } from '../../lib/content';
 import { waLink, mailLink, telLink } from '../../lib/links';
-import { t } from '../../i18n/utils';
+import { t, localizePath } from '../../i18n/utils';
 import type { Locale } from '../../i18n/locales';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -15,6 +15,7 @@ const year = new Date().getFullYear();
     <div class="btn-row">
       <a class="btn btn-primary" href="/cv/Ahmed-Galal-CV.pdf" download="Ahmed-Galal-CV.pdf">{p.ctaHire}</a>
       <a class="btn btn-ghost" href={waLink(p.whatsapp, p.waMessage)} target="_blank" rel="noopener">{p.ctaBuild}</a>
+      <a class="btn btn-ghost" href={localizePath('/cv/', locale)} data-cv-open>{t(locale, 'previewCv')}</a>
     </div>
     <ul class="links">
       <li><a href={mailLink(p.email, t(locale, 'emailSubject'))}><span>{t(locale, 'email')}</span>{p.email}</a></li>

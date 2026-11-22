@@ -1,0 +1,16 @@
+---
+import { t } from '../../i18n/utils';
+import type { Locale } from '../../i18n/locales';
+interface Props { locale: Locale; lazy?: boolean }
+const { locale, lazy = true } = Astro.props;
+const pages = [1, 2, 3];
+---
+<div class="cv-pages">
+  {pages.map((n) => (
+    <img src={`/cv/page-${n}.webp`} alt={`${t(locale, 'cvPage')} ${n} / ${pages.length}`} width="1000" height="1415" loading={lazy ? 'lazy' : 'eager'} decoding="async" />
+  ))}
+</div>
+<style>
+  .cv-pages { display: grid; gap: 16px; }
+  img { width: 100%; height: auto; border-radius: 10px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+</style>

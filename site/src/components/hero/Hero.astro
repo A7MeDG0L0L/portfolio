@@ -2,7 +2,7 @@
 import Phone from './Phone.astro';
 import { getProfile } from '../../lib/content';
 import { waLink } from '../../lib/links';
-import { t } from '../../i18n/utils';
+import { t, localizePath } from '../../i18n/utils';
 import type { Locale } from '../../i18n/locales';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -19,6 +19,7 @@ const p = await getProfile(locale);
     <div class="ctas">
       <a class="btn primary" href="/cv/Ahmed-Galal-CV.pdf" download="Ahmed-Galal-CV.pdf">{p.ctaHire} <small>{p.ctaHireHint} ↓</small></a>
       <a class="btn ghost" href={waLink(p.whatsapp, p.waMessage)} target="_blank" rel="noopener">{p.ctaBuild} <small>{p.ctaBuildHint}</small></a>
+      <a class="btn text" href={localizePath('/cv/', locale)} data-cv-open>{t(locale, 'previewCv')}</a>
     </div>
     <p class="reach" data-testid="reach"><b class="grad">{p.reach.value}</b><span>{p.reach.label}</span></p>
     <p class="trust">{t(locale, 'shippedFor')}</p>
@@ -44,6 +45,8 @@ const p = await getProfile(locale);
   .btn { padding: 14px 20px; border-radius: 14px; font-weight: 600; font-size: 15px; display: inline-flex; gap: 10px; align-items: center; }
   .btn.primary { background: var(--text); color: var(--on-text); }
   .btn.ghost { border: 1px solid var(--line); background: var(--panel); }
+  .btn.text { padding-inline: 8px; color: var(--muted); text-decoration: underline; text-underline-offset: 4px; }
+  .btn.text:hover { color: var(--text); }
   .btn small { font-weight: 400; opacity: .65; font-size: 12px; }
   .reach { display: flex; align-items: baseline; gap: 10px; margin: 30px 0 0; }
   .reach b { font-size: 34px; font-weight: 800; letter-spacing: -.02em; }

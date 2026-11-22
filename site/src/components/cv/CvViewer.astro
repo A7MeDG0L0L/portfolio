@@ -1,0 +1,51 @@
+---
+import CvPages from './CvPages.astro';
+import { t } from '../../i18n/utils';
+import type { Locale } from '../../i18n/locales';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+<dialog id="cv-viewer" class="cv" data-testid="cv-viewer" aria-labelledby="cv-viewer-title">
+  <header>
+    <h2 id="cv-viewer-title">{t(locale, 'cvTitle')}</h2>
+    <a class="dl" href="/cv/Ahmed-Galal-CV.pdf" download="Ahmed-Galal-CV.pdf">{t(locale, 'downloadPdf')} <span aria-hidden="true">↓</span></a>
+    <button type="button" class="x" data-cv-close aria-label={t(locale, 'close')}>✕</button>
+  </header>
+  <div class="body"><CvPages locale={locale} /></div>
+</dialog>
+
+<script>
+  const dlg = document.getElementById('cv-viewer') as HTMLDialogElement | null;
+  let opener: HTMLElement | null = null;
+  if (dlg && typeof dlg.showModal === 'function') {
+    document.querySelectorAll<HTMLAnchorElement>('[data-cv-open]').forEach((a) =>
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        opener = a;
+        dlg.showModal();
+        document.documentElement.classList.add('sheet-open');
+      }),
+    );
+    dlg.addEventListener('close', () => {
+      document.documentElement.classList.remove('sheet-open');
+      opener?.focus();
+    });
+    dlg.querySelector('[data-cv-close]')?.addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+  }
+</script>
+
+<style>
+  .cv { margin: auto; width: min(920px, calc(100vw - 32px)); max-width: none; height: 92vh; max-height: 92vh; padding: 0; border: 1px solid var(--line); border-radius: 24px; background: var(--panel); color: var(--text); overflow: hidden; }
+  .cv[open] { display: flex; flex-direction: column; }
+  .cv::backdrop { background: rgba(5, 6, 10, .72); backdrop-filter: blur(6px); }
+  header { display: flex; align-items: center; gap: 12px; padding: 14px 16px 14px 22px; border-bottom: 1px solid var(--line); }
+  h2 { font-size: 17px; margin: 0; margin-inline-end: auto; }
+  .dl { background: var(--text); color: var(--on-text); font-weight: 600; font-size: 14px; padding: 10px 16px; border-radius: 12px; }
+  .x { width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel-2); color: var(--text); font-size: 16px; cursor: pointer; }
+  .body { overflow-y: auto; overscroll-behavior: contain; padding: 18px; flex: 1; background: var(--panel-2); }
+  @media (max-width: 599px) {
+    .cv { width: 100vw; height: 100dvh; max-height: 100dvh; border-radius: 0; border: 0; }
+    .body { padding: 10px; }
+  }
+</style>

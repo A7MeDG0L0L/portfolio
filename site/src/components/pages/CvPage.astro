@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../Nav.astro';
+import CvPages from '../cv/CvPages.astro';
+import { getProfile } from '../../lib/content';
+import { t, altLocalePath, localizePath } from '../../i18n/utils';
+import type { Locale } from '../../i18n/locales';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const p = await getProfile(locale);
+---
+<Base title={`${t(locale, 'cvTitle')} — ${p.name}`} description={p.intro} locale={locale} altPath={altLocalePath(Astro.url)}>
+  <Nav locale={locale} />
+  <main id="main" class="container-x cvpage">
+    <a class="back" href={localizePath('/', locale)}><span class="flip" aria-hidden="true">←</span> {t(locale, 'back')}</a>
+    <div class="head">
+      <h1>{t(locale, 'cvTitle')}</h1>
+      <a class="btn btn-primary" href="/cv/Ahmed-Galal-CV.pdf" download="Ahmed-Galal-CV.pdf">{t(locale, 'downloadPdf')} <span aria-hidden="true">↓</span></a>
+    </div>
+    <CvPages locale={locale} lazy={false} />
+  </main>
+</Base>
+<style>
+  .cvpage { max-width: 900px; padding-block: 28px 64px; }
+  .back { color: var(--muted); font-size: 14px; display: inline-flex; gap: 8px; }
+  .head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 18px 0 22px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); margin: 0; }
+</style>

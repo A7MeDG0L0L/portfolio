@@ -59,6 +59,7 @@ const shortName = (c: string) => c.replace(/\s+International LLC$|\.com$|\.co$/i
       <p>{q.companiesText}</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="/cv/Ahmed-Galal-CV.pdf" download="Ahmed-Galal-CV.pdf">{t(locale, 'downloadCv')}</a>
+        <a class="btn btn-ghost" href={localizePath('/cv/', locale)} data-cv-open>{t(locale, 'previewCv')}</a>
         <a class="btn btn-ghost" href={p.linkedin} target="_blank" rel="noopener">{t(locale, 'linkedin')}</a>
       </div>
     </div>
