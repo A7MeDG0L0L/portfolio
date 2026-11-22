@@ -21,3 +21,15 @@ describe('build output', () => {
     expect(fs.existsSync(path.join(dist, 'ar', 'index.html'))).toBe(true);
   });
 });
+
+describe('performance budget', () => {
+  it('home JS budget: script files loaded by / total ≤ 100 KB', () => {
+    const html = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+    const srcs = [...html.matchAll(/<script[^>]*\ssrc="([^"]+)"/g)].map((m) => m[1]);
+    const total = srcs.reduce((sum, s) => sum + fs.statSync(path.join(dist, s)).size, 0);
+    const inline = [...html.matchAll(/<script(?![^>]*\ssrc=)[^>]*>([\s\S]*?)<\/script>/g)]
+      .filter((m) => !/application\/ld\+json/.test(m[0]))
+      .reduce((sum, m) => sum + Buffer.byteLength(m[1]), 0);
+    expect(total + inline).toBeLessThanOrEqual(102400);
+  });
+});

@@ -1,0 +1,16 @@
+---
+import { getProfile } from '../../lib/content';
+const p = await getProfile('en');
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: p.name,
+  jobTitle: p.title,
+  email: `mailto:${p.email}`,
+  url: (Astro.site ?? new URL(Astro.url.origin)).href,
+  address: { '@type': 'PostalAddress', addressLocality: 'Cairo', addressCountry: 'EG' },
+  sameAs: [p.linkedin, p.github],
+  knowsAbout: ['Flutter', 'Dart', 'Kotlin', 'Jetpack Compose', 'Android', 'Mobile application development'],
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} />
