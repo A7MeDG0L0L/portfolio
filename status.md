@@ -1,6 +1,6 @@
 # Status — Ahmed Galal Portfolio
 
-**Current state:** built, merged to AG-AI `main`, published to **github.com/A7MeDG0L0L/portfolio** (public). Not deployed yet.
+**Current state:** LIVE at **https://ahmedgalal.vercel.app** (Vercel Hobby, project `ahmedgalal`, auto-deploys on push to A7MeDG0L0L/portfolio `main`). Repo: **github.com/A7MeDG0L0L/portfolio** (public). Custom domain ahmedgalal.dev planned (available as of 2026-11-22).
 **Gate 1 (plan approval):** ☑ 2026-11-22 · **Gate 2 (pre-ship):** ☐ (CEO test drive + Arabic copy review + deploy)
 
 ## Syncing to the public repo
@@ -13,6 +13,11 @@ gh auth switch -h github.com -u AGalal-BW
 ```
 
 ## Log (newest first)
+
+### 2026-11-22 (evening)
+STATUS: live
+Done: deployed to Vercel (root `site`, Astro preset). Live smoke test: all key pages/assets 200; canonical/hreflang/sitemap/OG resolve to ahmedgalal.vercel.app. Live Lighthouse mobile: perf 100, a11y 98–100, best practices 100, SEO 100.
+Next: buy ahmedgalal.dev and add it in Vercel → Domains (site URL switches automatically).
 
 ### 2026-11-22 (afternoon)
 STATUS: on track
