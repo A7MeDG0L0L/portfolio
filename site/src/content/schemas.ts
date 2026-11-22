@@ -49,6 +49,7 @@ export const projectSchema = z.object({
   dates: z.string().optional(),
   order: z.number().int(),
   inPhone: z.boolean().default(true),
+  comingSoon: z.boolean().default(false),
   icon: z.object({ label: z.string(), bg: z.string(), fg: z.string().optional(), image: z.string().startsWith('/icons/').optional() }),
   summary: z.string(),
   problem: z.string().optional(),

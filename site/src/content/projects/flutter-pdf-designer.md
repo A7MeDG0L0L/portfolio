@@ -5,7 +5,8 @@ slug: flutter-pdf-designer
 type: package
 company: Tecfy.co
 dates: Flutter package
-order: 15
+order: 16
+inPhone: false
 icon: { label: "PDF", bg: "#ffffff", fg: "#d00000" }
 summary: A Flutter package for designing PDF documents, built at Tecfy.
 highlights:

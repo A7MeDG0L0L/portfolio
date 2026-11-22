@@ -54,7 +54,7 @@ describe('English content', () => {
     expect(experience.roles.find((r) => r.company === 'The Sparks Foundation')?.inTimeline).toBe(false);
   });
 
-  it('16 projects with the right types', () => {
+  it('17 projects with the right types', () => {
     expect(projects.map((p) => p.slug)).toEqual([
       'bluworks',
       'bluworks-tablet',
@@ -64,6 +64,7 @@ describe('English content', () => {
       'aramex-global-shopper',
       'myus',
       'khosomat',
+      'soura',
       'convertify',
       'xo-clash',
       'daily-tips',
@@ -77,7 +78,7 @@ describe('English content', () => {
     expect(types['simple-file-manager']).toBe('package');
     expect(types['flutter-pdf-designer']).toBe('package');
     expect(types['ai-dev']).toBe('approach');
-    expect(projects.filter((p) => p.type === 'app')).toHaveLength(13);
+    expect(projects.filter((p) => p.type === 'app')).toHaveLength(14);
     expect(projects.every((p) => p.locale === 'en')).toBe(true);
   });
 
@@ -148,15 +149,15 @@ describe('artwork', () => {
     for (const src of imgs) expect(fs.existsSync(path.join(pub, src)), src).toBe(true);
   });
   it('published apps use their real store icon', () => {
-    for (const slug of ['bluworks', 'aramex-mobile', 'aramex-freight', 'aramex-global-shopper', 'myus', 'shop-and-ship', 'bluworks-tablet', 'khosomat', 'convertify', 'xo-clash', 'daily-tips', 'nasa-daily', 'made-me-laugh']) {
+    for (const slug of ['bluworks', 'aramex-mobile', 'aramex-freight', 'aramex-global-shopper', 'myus', 'shop-and-ship', 'bluworks-tablet', 'khosomat', 'soura', 'convertify', 'xo-clash', 'daily-tips', 'nasa-daily', 'made-me-laugh']) {
       expect(projects.find((p) => p.slug === slug)?.icon.image, slug).toBe(`/icons/${slug}.png`);
     }
   });
 });
 
 describe('phone selection', () => {
-  it('phone hides the extra Aramex apps and Made Me Laugh', () => {
-    expect(projects.filter((p) => !p.inPhone).map((p) => p.slug)).toEqual(['aramex-freight', 'aramex-global-shopper', 'myus', 'made-me-laugh']);
+  it('phone hides the extra Aramex apps, Made Me Laugh and the PDF package', () => {
+    expect(projects.filter((p) => !p.inPhone).map((p) => p.slug)).toEqual(['aramex-freight', 'aramex-global-shopper', 'myus', 'made-me-laugh', 'flutter-pdf-designer']);
   });
 });
 
@@ -173,5 +174,21 @@ describe('profile photo', () => {
     for (const f of ['photo/ahmed.jpg', 'photo/ahmed.webp']) {
       expect(fs.readFileSync(path.join(pub, f)).includes(Buffer.from('Exif')), f).toBe(false);
     }
+  });
+});
+
+describe('experience years and upcoming apps', () => {
+  it('says 5+ years in English and Arabic', () => {
+    expect(profile.stats[0].value).toBe('5+ yrs');
+    expect(profile.intro).toContain('5+ years');
+    const ar = profileSchema.parse(readJson('profile/ar.json'));
+    expect(ar.stats[0].value).toBe('+5 سنوات');
+    expect(ar.intro).toContain('أكثر من 5 سنوات');
+  });
+  it('Soura is marked coming soon and has no store link yet', () => {
+    const soura = projects.find((p) => p.slug === 'soura')!;
+    expect(soura.comingSoon).toBe(true);
+    expect(Object.values(soura.links).filter(Boolean)).toEqual([]);
+    expect(projects.filter((p) => p.comingSoon).map((p) => p.slug)).toEqual(['soura']);
   });
 });

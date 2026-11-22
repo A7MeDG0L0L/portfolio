@@ -60,6 +60,7 @@ const en = {
   nextProject: 'Next',
   backToWork: 'All work',
   sideProject: 'Side project',
+  comingSoon: 'Coming soon to Google Play',
   footerNote: 'Built with Astro.',
 };
 
@@ -121,6 +122,7 @@ const ar: Record<UiKey, string> = {
   nextProject: 'التالي',
   backToWork: 'كل الأعمال',
   sideProject: 'مشروع جانبي',
+  comingSoon: 'قريبًا على Google Play',
   footerNote: 'مبني باستخدام Astro.',
 };
 

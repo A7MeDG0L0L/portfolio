@@ -17,6 +17,7 @@ const meta = [d.company, d.dates].filter(Boolean).join(' · ');
   </div>
   <h3 id={`sheet-title-${d.slug}`} tabindex="-1">{d.title}</h3>
   {meta && <p class="meta">{meta}</p>}
+  {d.comingSoon && <p class="soon">{t(locale, 'comingSoon')}</p>}
   <ul class="chips" aria-label={t(locale, 'stack')}>{d.stack.map((s) => <li>{s}</li>)}</ul>
   <ul class="bullets">{d.highlights.map((h) => <li>{h}</li>)}</ul>
   {hasCaseStudyPage(project) && (
@@ -31,6 +32,7 @@ const meta = [d.company, d.dates].filter(Boolean).join(' · ');
   .cover img { width: 76px; height: 76px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
   h3 { font-size: 22px; letter-spacing: -.02em; margin: 0; outline: none; }
   .meta { font-size: 12px; color: #8b93a7; margin: 4px 0 12px; }
+  .soon { display: inline-block; font-size: 11px; font-weight: 600; color: #3ddc97; border: 1px solid rgba(61,220,151,.35); background: rgba(61,220,151,.1); border-radius: 999px; padding: 4px 10px; margin: 0 0 12px; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0 0 14px; }
   .chips li { font-size: 11px; padding: 4px 9px; border-radius: 999px; background: rgba(84,197,248,.1); color: #54c5f8; border: 1px solid rgba(84,197,248,.2); }
   .bullets { list-style: none; display: grid; gap: 8px; padding: 0; margin: 0; }

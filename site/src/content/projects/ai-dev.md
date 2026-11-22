@@ -4,7 +4,7 @@ short: "AI Dev"
 slug: ai-dev
 type: approach
 dates: How I work
-order: 16
+order: 17
 icon: { label: "AI", bg: "linear-gradient(135deg,#7c5cff,#54c5f8)" }
 summary: How I use AI to ship faster without cutting corners.
 highlights:

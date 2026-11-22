@@ -4,7 +4,7 @@ short: "XO Clash"
 slug: xo-clash
 type: app
 dates: Side project
-order: 10
+order: 11
 icon: { label: "XO", bg: "#1f2a6b", image: "/icons/xo-clash.png" }
 summary: Tic tac toe against a smart phone AI or a friend, offline, in Arabic & English.
 highlights:

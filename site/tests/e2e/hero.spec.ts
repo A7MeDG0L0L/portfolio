@@ -139,3 +139,18 @@ test('hero shows the profile photo', async ({ page }) => {
   await expect(photo).toHaveAttribute('alt', 'Ahmed Galal');
   expect(await photo.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth > 0)).toBe(true);
 });
+
+test('Soura is on the phone with a coming-soon note; PDF package is not', async ({ page }, info) => {
+  desktopOnly(info.project.name);
+  await page.goto('/');
+  const hero = page.getByTestId('hero');
+  await expect(hero.locator('[data-sheet="flutter-pdf-designer"]')).toHaveCount(0);
+  await hero.locator('[data-sheet="soura"]').click();
+  await expect(page.locator('#sheet-soura')).toContainText('Coming soon to Google Play');
+});
+
+test('case study shows the coming-soon badge instead of store links', async ({ page }) => {
+  await page.goto('/work/soura/');
+  await expect(page.getByTestId('coming-soon')).toHaveText('Coming soon to Google Play');
+  await expect(page.getByTestId('project-links')).toHaveCount(0);
+});

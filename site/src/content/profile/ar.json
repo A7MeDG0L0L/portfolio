@@ -5,7 +5,7 @@
   "photo": "/photo/ahmed.webp",
   "headline": "أبني تطبيقات موبايل",
   "headlineAccent": "سريعة وسلسة وبإحساس أصلي.",
-  "intro": "مطوّر Flutter وAndroid بخبرة 5 سنوات في بناء تطبيقات لأرامكس وBluworks وغيرهما. تطبيقات تعمل بدون إنترنت، بالعربية والإنجليزية، ومصمَّمة لتكبر.",
+  "intro": "مطوّر Flutter وAndroid بخبرة أكثر من 5 سنوات في بناء تطبيقات لأرامكس وBluworks وغيرهما. تطبيقات تعمل بدون إنترنت، بالعربية والإنجليزية، ومصمَّمة لتكبر.",
   "available": true,
   "availabilityText": "متاح لوظيفة بدوام كامل ولمشاريع فريلانس",
   "email": "agalal819@gmail.com",
@@ -27,7 +27,7 @@
     { "name": "Khosomat", "src": "/logos/khosomat.svg" }
   ],
   "stats": [
-    { "value": "5 سنوات", "label": "Flutter + Android Native" },
+    { "value": "+5 سنوات", "label": "Flutter + Android Native" },
     { "value": "AR / EN", "label": "واجهات ثنائية اللغة تدعم الاتجاه من اليمين لليسار" },
     { "value": "بدون إنترنت", "label": "تطبيقات تستمر في العمل بلا اتصال" }
   ],

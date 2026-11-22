@@ -24,7 +24,7 @@ export const GET: APIRoute = async () => {
     el('div', { flex: 1, borderRadius: 42, background: 'linear-gradient(160deg,#1c2340,#2a1b4d 55%,#0f2a3d)', display: 'flex', flexDirection: 'column', padding: 26, gap: 22 }, [
       el('div', { display: 'flex', flexDirection: 'column', padding: 18, borderRadius: 22, background: 'rgba(255,255,255,0.08)', color: '#fff' }, [
         el('div', { fontSize: 15, color: '#b9c0d4' }, 'Experience'),
-        el('div', { fontSize: 36, fontWeight: 800 }, '5 yrs'),
+        el('div', { fontSize: 36, fontWeight: 800 }, '5+ yrs'),
       ]),
       el('div', { display: 'flex', flexWrap: 'wrap', gap: 14 },
         ['bluworks', 'bluworks-tablet', 'shop-and-ship', 'aramex-mobile', 'khosomat', 'convertify', 'xo-clash', 'daily-tips', 'nasa-daily'].map((slug) => appIcon(slug)),

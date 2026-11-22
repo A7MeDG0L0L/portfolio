@@ -4,7 +4,7 @@ short: "Convertify"
 slug: convertify
 type: app
 dates: مشروع جانبي
-order: 9
+order: 10
 icon: { label: "⇄", bg: "#111318", image: "/icons/convertify.png" }
 summary: محوّل وحدات وأسعار عملات مباشرة يعمل بدون إنترنت، بالعربية والإنجليزية.
 highlights:

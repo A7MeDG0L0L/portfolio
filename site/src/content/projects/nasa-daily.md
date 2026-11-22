@@ -4,7 +4,7 @@ short: "NASA"
 slug: nasa-daily
 type: app
 dates: Side project
-order: 12
+order: 13
 icon: { label: "✦", bg: "#0b3d91", image: "/icons/nasa-daily.png" }
 summary: Fetches and saves NASA's daily space images.
 highlights:

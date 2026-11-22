@@ -5,7 +5,7 @@
   "photo": "/photo/ahmed.webp",
   "headline": "I build mobile apps that feel",
   "headlineAccent": "fast, smooth & native.",
-  "intro": "Flutter & Android developer with 5 years of experience shipping apps for Aramex, Bluworks and more. Offline-first, bilingual (Arabic/English) and built to scale.",
+  "intro": "Flutter & Android developer with 5+ years of experience shipping apps for Aramex, Bluworks and more. Offline-first, bilingual (Arabic/English) and built to scale.",
   "available": true,
   "availabilityText": "Open to full-time roles & freelance projects",
   "email": "agalal819@gmail.com",
@@ -27,7 +27,7 @@
     { "name": "Khosomat", "src": "/logos/khosomat.svg" }
   ],
   "stats": [
-    { "value": "5 yrs", "label": "Flutter + Android Native" },
+    { "value": "5+ yrs", "label": "Flutter + Android Native" },
     { "value": "AR / EN", "label": "Bilingual, RTL-ready UIs" },
     { "value": "Offline-first", "label": "Apps that keep working without signal" }
   ],

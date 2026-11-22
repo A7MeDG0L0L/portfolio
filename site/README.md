@@ -40,7 +40,7 @@ Rules the tests enforce:
 
 ### Dev server shows old content?
 
-Delete `.astro/data-store.json` and restart `npm run dev`. The production build is not affected.
+Stop `npm run dev` first, then delete the `.astro/` folder, then start dev again. (Deleting it while dev is running does nothing: dev writes its old cache back when it exits.) The production build is not affected.
 
 ### Adding screenshots
 

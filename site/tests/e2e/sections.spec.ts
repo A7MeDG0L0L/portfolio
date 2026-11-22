@@ -6,10 +6,10 @@ test('sections exist in order', async ({ page }) => {
   expect(ids.filter((id) => id !== 'hero')).toEqual(['quick-look', 'work', 'experience', 'skills', 'contact']);
 });
 
-test('work shows 15 cards, no ai-dev', async ({ page }) => {
+test('work shows 16 cards, no ai-dev', async ({ page }) => {
   await page.goto('/');
   const cards = page.locator('#work [data-testid=project-card]');
-  await expect(cards).toHaveCount(15);
+  await expect(cards).toHaveCount(16);
   const hrefs = await cards.evaluateAll((els) => els.map((e) => e.getAttribute('href')));
   expect(hrefs).not.toContain('/work/ai-dev/');
   expect(hrefs).toContain('/work/shop-and-ship/');

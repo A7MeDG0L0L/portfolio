@@ -31,6 +31,7 @@ const meta = [d.company, d.dates].filter(Boolean).join(' · ');
     <header class="head">
       {meta && <p class="eyebrow">{meta}</p>}
       <h1>{d.title}</h1>
+      {d.comingSoon && <p class="soon" data-testid="coming-soon">{t(locale, 'comingSoon')}</p>}
       <p class="lead">{d.summary}</p>
     </header>
     <div class="grid">
@@ -83,6 +84,7 @@ const meta = [d.company, d.dates].filter(Boolean).join(' · ');
   .head { margin: 28px 0 8px; }
   h1 { font-size: clamp(34px, 5vw, 56px); letter-spacing: -.03em; margin: 8px 0 10px; }
   :global(html:lang(ar)) h1 { letter-spacing: 0; }
+  .soon { display: inline-block; font-size: 13px; font-weight: 600; color: var(--ok); border: 1px solid color-mix(in srgb, var(--ok) 40%, transparent); border-radius: 999px; padding: 5px 12px; margin: 0 0 14px; }
   .lead { color: var(--muted); font-size: 18px; margin: 0; max-width: 680px; line-height: 1.6; }
   .grid > * { min-width: 0; }
   .grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; margin-top: 36px; align-items: start; }
