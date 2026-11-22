@@ -57,4 +57,4 @@ The first screenshot becomes the cover. Extra ones show on the case study page.
 
 1. Import the GitHub repo in Vercel and set **Root Directory** to `projects/portfolio/site`.
 2. The framework preset is detected as Astro. Build command `npm run build`, output `dist`.
-3. Once you have a domain, update `site:` in `astro.config.mjs`. Canonical URLs, hreflang, sitemap and the OG image URL all use it.
+3. The site address (canonical URLs, hreflang, sitemap, social previews) comes from `site-url.mjs`: Vercel's production URL is picked up automatically and switches to your custom domain once you add it in Vercel. Set `SITE_URL` to override.

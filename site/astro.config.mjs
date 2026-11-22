@@ -2,10 +2,10 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import { resolveSiteUrl } from './site-url.mjs';
 
-// `site` is a placeholder until Ahmed picks a domain.
 export default defineConfig({
-  site: 'https://ahmedgalal.dev',
+  site: resolveSiteUrl(process.env),
   trailingSlash: 'always',
   i18n: {
     defaultLocale: 'en',
