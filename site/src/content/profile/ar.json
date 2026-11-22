@@ -26,6 +26,7 @@
     { "name": "Tecfy", "src": "/logos/tecfy.png", "showName": true },
     { "name": "Khosomat", "src": "/logos/khosomat.svg" }
   ],
+  "reach": { "value": "+10 مليون", "label": "تحميل على Android وiOS" },
   "stats": [
     { "value": "+5 سنوات", "label": "Flutter + Android Native" },
     { "value": "AR / EN", "label": "واجهات ثنائية اللغة تدعم الاتجاه من اليمين لليسار" },

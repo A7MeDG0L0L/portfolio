@@ -56,13 +56,19 @@ test('contact lists both phone numbers as call links', async ({ page }) => {
   await expect(page.locator('#contact a[href="tel:+201111199742"]')).toHaveCount(1);
 });
 
-test('mobile: third quick look stat spans the full row', async ({ page }, info) => {
+test('mobile: quick look stats sit in a tidy 2 x 2 grid', async ({ page }, info) => {
   test.skip(info.project.name !== 'mobile', 'mobile layout only');
   await page.setViewportSize({ width: 360, height: 780 });
   await page.goto('/');
-  const [grid, third] = await Promise.all([
-    page.locator('#quick-look .bento').boundingBox(),
-    page.locator('#quick-look .stat').nth(2).boundingBox(),
-  ]);
-  expect(Math.round(third!.width)).toBe(Math.round(grid!.width));
+  const grid = await page.locator('#quick-look .stats').boundingBox();
+  const boxes = await page.locator('#quick-look .stat').evaluateAll((els) => els.map((e) => e.getBoundingClientRect().width));
+  expect(boxes).toHaveLength(4);
+  for (const w of boxes) expect(w).toBeLessThan(grid!.width / 2 + 1);
+});
+
+test('10M+ downloads appears in the hero and as the first Quick Look stat', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByTestId('hero').getByTestId('reach')).toContainText('10M+');
+  await expect(page.locator('#quick-look .stat').first()).toContainText('10M+');
+  await expect(page.locator('#quick-look .stat')).toHaveCount(4);
 });

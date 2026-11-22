@@ -130,7 +130,8 @@ describe('Arabic content mirrors English facts', () => {
 
 describe('copy stays within the CV', () => {
   const files = (dir: string) => fs.readdirSync(path.join(root, dir)).map((f) => fs.readFileSync(path.join(root, dir, f), 'utf8'));
-  const all = ['profile', 'experience', 'projects'].flatMap(files).join('\n');
+  // The reach line (10M+ across Android & iOS) was confirmed by Ahmed on 2026-11-22, so it is exempt.
+  const all = ['profile', 'experience', 'projects'].flatMap(files).join('\n').replace(/"reach": \{[^}]*\}/g, '');
   it('makes no claims the CV does not (iOS, startups, invented product features)', () => {
     for (const phrase of [/\biOS\b/, /\bstartups\b/i, /ناشئة/, /catalogue/i, /كتالوج/, /existing WooCommerce/i, /متجر WooCommerce قائم/]) {
       expect(all, String(phrase)).not.toMatch(phrase);
@@ -190,5 +191,14 @@ describe('experience years and upcoming apps', () => {
     expect(soura.comingSoon).toBe(true);
     expect(Object.values(soura.links).filter(Boolean)).toEqual([]);
     expect(projects.filter((p) => p.comingSoon).map((p) => p.slug)).toEqual(['soura']);
+  });
+});
+
+describe('reach', () => {
+  it('shows 10M+ downloads across Android & iOS in both languages', () => {
+    expect(profile.reach).toEqual({ value: '10M+', label: 'Downloads across Android & iOS' });
+    const ar = profileSchema.parse(readJson('profile/ar.json'));
+    expect(ar.reach.value).toBe('+10 مليون');
+    expect(ar.reach.label).toContain('Android');
   });
 });

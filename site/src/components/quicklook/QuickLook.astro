@@ -16,9 +16,12 @@ const shortName = (c: string) => c.replace(/\s+International LLC$|\.com$|\.co$/i
 <section id="quick-look" class="section container-x" aria-labelledby="ql-title">
   <p class="eyebrow" id="ql-title">{t(locale, 'quickLook')} · {t(locale, 'quickLookHint')}</p>
   <div class="bento">
-    {p.stats.map((s) => (
-      <div class="tile stat reveal"><div class="n">{s.value}</div><p>{s.label}</p></div>
-    ))}
+    <div class="stats">
+      <div class="tile stat reach reveal"><div class="n grad">{p.reach.value}</div><p>{p.reach.label}</p></div>
+      {p.stats.map((s) => (
+        <div class="tile stat reveal"><div class="n">{s.value}</div><p>{s.label}</p></div>
+      ))}
+    </div>
 
     <a class="tile now reveal" href={`${localizePath('/', locale)}#experience`} data-expand data-testid="tile-now">
       <span class="arrow" aria-hidden="true">↗</span>
@@ -82,7 +85,8 @@ const shortName = (c: string) => c.replace(/\s+International LLC$|\.com$|\.co$/i
   .tile h3 { font-size: 24px; letter-spacing: -.02em; line-height: 1.15; margin: 8px 0; }
   .tile p { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0; }
   .tile .eyebrow { margin: 0; }
-  .stat { grid-column: span 2; }
+  .stats { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .reach { border-color: color-mix(in srgb, var(--accent2) 45%, var(--line)); background: linear-gradient(160deg, color-mix(in srgb, var(--accent2) 14%, var(--panel)), var(--panel)); }
   .stat .n { font-size: 32px; font-weight: 750; letter-spacing: -.03em; }
   .now { grid-column: span 3; grid-row: span 2; cursor: pointer; }
   .now:hover { border-color: var(--muted); transform: translateY(-2px); }
@@ -107,8 +111,8 @@ const shortName = (c: string) => c.replace(/\s+International LLC$|\.com$|\.co$/i
   @media (max-width: 899px) {
     .bento { grid-template-columns: repeat(2, 1fr); }
     .tile { grid-column: span 2 !important; grid-row: auto !important; }
-    .stat { grid-column: span 1 !important; }
-    .stat:nth-child(3) { grid-column: span 2 !important; }
+    .stats { grid-template-columns: repeat(2, 1fr); grid-column: span 2 !important; }
+    .stats .tile { grid-column: auto !important; }
     .timeline { flex-wrap: wrap; }
     .timeline li { flex: 1 1 30%; }
   }

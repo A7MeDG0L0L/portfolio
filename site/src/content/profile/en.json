@@ -26,6 +26,7 @@
     { "name": "Tecfy", "src": "/logos/tecfy.png", "showName": true },
     { "name": "Khosomat", "src": "/logos/khosomat.svg" }
   ],
+  "reach": { "value": "10M+", "label": "Downloads across Android & iOS" },
   "stats": [
     { "value": "5+ yrs", "label": "Flutter + Android Native" },
     { "value": "AR / EN", "label": "Bilingual, RTL-ready UIs" },

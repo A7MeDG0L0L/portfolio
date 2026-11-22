@@ -26,6 +26,7 @@ export const profileSchema = z.object({
   focusLine: z.string(),
   logos: z.array(z.object({ name: z.string(), src: z.string().startsWith('/logos/'), showName: z.boolean().default(false) })),
   stats: z.array(z.object({ value: z.string(), label: z.string() })),
+  reach: z.object({ value: z.string(), label: z.string() }),
   quickLook: z.object({
     nowLabel: z.string(),
     nowTitle: z.string(),
