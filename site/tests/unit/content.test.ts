@@ -96,6 +96,8 @@ describe('English content', () => {
   it('profile contact matches CV', () => {
     expect(profile.email).toBe('agalal819@gmail.com');
     expect(profile.whatsapp).toBe('+201119369127');
+    expect(profile.phone).toBe('+201119369127');
+    expect(profile.phoneAlt).toBe('+201111199742');
     expect(profile.github.endsWith('/A7MeDG0L0L')).toBe(true);
   });
 });
@@ -117,7 +119,7 @@ describe('Arabic content mirrors English facts', () => {
     expect(arProjects.every((p) => p.locale === 'ar')).toBe(true);
   });
   it('same contact details', () => {
-    for (const k of ['email', 'whatsapp', 'linkedin', 'github'] as const) expect(arProfile[k]).toBe(profile[k]);
+    for (const k of ['email', 'whatsapp', 'phone', 'phoneAlt', 'linkedin', 'github'] as const) expect(arProfile[k]).toBe(profile[k]);
   });
   it('same roles and dates', () => {
     const pick = (r: { start: string; end: string | null; inTimeline: boolean; bullets: string[] }) => [r.start, r.end, r.inTimeline, r.bullets.length];

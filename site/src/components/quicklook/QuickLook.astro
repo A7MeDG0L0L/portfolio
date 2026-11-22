@@ -108,7 +108,7 @@ const shortName = (c: string) => c.replace(/\s+International LLC$|\.com$|\.co$/i
     .bento { grid-template-columns: repeat(2, 1fr); }
     .tile { grid-column: span 2 !important; grid-row: auto !important; }
     .stat { grid-column: span 1 !important; }
-    .stat:last-of-type { grid-column: span 2 !important; }
+    .stat:nth-child(3) { grid-column: span 2 !important; }
     .timeline { flex-wrap: wrap; }
     .timeline li { flex: 1 1 30%; }
   }

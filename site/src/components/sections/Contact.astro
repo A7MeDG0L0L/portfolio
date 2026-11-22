@@ -1,6 +1,6 @@
 ---
 import { getProfile } from '../../lib/content';
-import { waLink, mailLink } from '../../lib/links';
+import { waLink, mailLink, telLink } from '../../lib/links';
 import { t } from '../../i18n/utils';
 import type { Locale } from '../../i18n/locales';
 interface Props { locale: Locale }
@@ -18,6 +18,8 @@ const year = new Date().getFullYear();
     </div>
     <ul class="links">
       <li><a href={mailLink(p.email, t(locale, 'emailSubject'))}><span>{t(locale, 'email')}</span>{p.email}</a></li>
+      <li><a href={telLink(p.phone)}><span>{t(locale, 'call')}</span><bdi>{p.phone}</bdi></a></li>
+      {p.phoneAlt && <li><a href={telLink(p.phoneAlt)}><span>{t(locale, 'phoneAlt')}</span><bdi>{p.phoneAlt}</bdi></a></li>}
       <li><a href={waLink(p.whatsapp, p.waMessage)} target="_blank" rel="noopener"><span>{t(locale, 'whatsapp')}</span><bdi>{p.whatsapp}</bdi></a></li>
       <li><a href={p.linkedin} target="_blank" rel="noopener"><span>{t(locale, 'linkedin')}</span>/in/a7medg0l0l</a></li>
       <li><a href={p.github} target="_blank" rel="noopener"><span>{t(locale, 'github')}</span>A7MeDG0L0L</a></li>

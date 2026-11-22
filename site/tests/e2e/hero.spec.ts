@@ -108,3 +108,26 @@ test('company logos render in the hero', async ({ page }) => {
   await expect(logos).toHaveCount(4);
   expect(await logos.evaluateAll((els) => els.map((e) => e.getAttribute('alt')))).toEqual(['Aramex', 'Bluworks', 'Tecfy', 'Khosomat']);
 });
+
+test('phone dock: call, WhatsApp, LinkedIn, email with real icons', async ({ page }, info) => {
+  desktopOnly(info.project.name);
+  await page.goto('/');
+  const dock = page.getByTestId('dock').getByRole('link');
+  await expect(dock).toHaveCount(4);
+  const hrefs = await dock.evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+  expect(hrefs[0]).toBe('tel:+201119369127');
+  expect(hrefs[1]).toMatch(/^https:\/\/wa\.me\/201119369127\?text=/);
+  expect(hrefs[2]).toBe('https://www.linkedin.com/in/a7medg0l0l/');
+  expect(hrefs[3]).toMatch(/^mailto:agalal819@gmail\.com/);
+  const icons = await dock.evaluateAll((as) => as.map((a) => a.querySelector('svg')?.getAttribute('data-icon')));
+  expect(icons).toEqual(['phone', 'whatsapp', 'linkedin', 'mail']);
+});
+
+test('mobile: call/WhatsApp/LinkedIn/email dock stays visible on phones', async ({ page }, info) => {
+  test.skip(info.project.name !== 'mobile', 'mobile layout only');
+  await page.goto('/');
+  const call = page.getByTestId('dock').locator('a[href="tel:+201119369127"]');
+  await expect(call).toBeVisible();
+  const box = await call.boundingBox();
+  expect(box!.width).toBeGreaterThanOrEqual(44);
+});

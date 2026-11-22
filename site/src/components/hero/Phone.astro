@@ -3,19 +3,20 @@ import AppIcon from './AppIcon.astro';
 import PhoneSheet from './PhoneSheet.astro';
 import { getProjects } from '../../lib/projects';
 import { getProfile } from '../../lib/content';
-import { waLink } from '../../lib/links';
-import { t, localizePath } from '../../i18n/utils';
+import { waLink, telLink, mailLink } from '../../lib/links';
+import BrandIcon from '../BrandIcon.astro';
+import type { GlyphName } from '../../lib/glyphs';
+import { t } from '../../i18n/utils';
 import type { Locale } from '../../i18n/locales';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const projects = (await getProjects(locale)).filter((p) => p.data.inPhone !== false);
 const profile = await getProfile(locale);
-const home = localizePath('/', locale);
-const dock = [
-  { href: `${home}#quick-look`, label: t(locale, 'dockAbout'), bg: '#2a2f3c', svg: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>' },
-  { href: `${home}#experience`, label: t(locale, 'dockExperience'), bg: '#2a2f3c', svg: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>' },
-  { href: waLink(profile.whatsapp, profile.waMessage), label: t(locale, 'whatsapp'), bg: '#25d366', svg: '<path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/>', ext: true },
-  { href: profile.linkedin, label: t(locale, 'linkedin'), bg: '#0a66c2', svg: '<path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 10v7"/>', ext: true },
+const dock: { href: string; label: string; bg: string; icon: GlyphName; ext?: boolean }[] = [
+  { href: telLink(profile.phone), label: `${t(locale, 'call')} ${profile.phone}`, bg: 'linear-gradient(180deg,#5bf675,#0cbd2a)', icon: 'phone' },
+  { href: waLink(profile.whatsapp, profile.waMessage), label: t(locale, 'whatsapp'), bg: '#25d366', icon: 'whatsapp', ext: true },
+  { href: profile.linkedin, label: t(locale, 'linkedin'), bg: '#0a66c2', icon: 'linkedin', ext: true },
+  { href: mailLink(profile.email, t(locale, 'emailSubject')), label: t(locale, 'email'), bg: 'linear-gradient(180deg,#1e9bff,#1a5cff)', icon: 'mail' },
 ];
 ---
 <div class="phone-wrap">
@@ -31,10 +32,10 @@ const dock = [
       <div class="icons">
         {projects.map((p) => <AppIcon project={p} locale={locale} short={p.data.short} />)}
       </div>
-      <nav class="dock" aria-label={t(locale, 'navContact')}>
+      <nav class="dock" aria-label={t(locale, 'navContact')} data-testid="dock">
         {dock.map((d) => (
           <a href={d.href} aria-label={d.label} title={d.label} style={`background:${d.bg}`} {...(d.ext ? { target: '_blank', rel: 'noopener' } : {})}>
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={d.svg} />
+            <BrandIcon name={d.icon} size={d.icon === 'linkedin' ? 26 : 24} />
           </a>
         ))}
       </nav>
@@ -61,12 +62,14 @@ const dock = [
   .widget .sm { font-size: 12px; color: #b9c0d4; }
   .icons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px 10px; padding: 4px 18px; }
   .dock { position: absolute; bottom: 14px; left: 14px; right: 14px; height: 78px; border-radius: 28px; background: rgba(255,255,255,.12); display: flex; justify-content: space-around; align-items: center; }
-  .dock a { width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center; }
+  .dock a { width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center; color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.25); transition: transform .15s; }
+  .dock a:hover, .dock a:focus-visible { transform: scale(1.08); }
   .hint { font-size: 13px; color: var(--muted); margin: 0; text-align: center; max-width: 280px; }
 
   @media (max-width: 599px) {
     .phone, .screen { width: auto; height: auto; padding: 0; background: none; box-shadow: none; border-radius: 0; overflow: visible; }
-    .island, .status, .widget, .dock { display: none; }
+    .island, .status, .widget { display: none; }
+    .dock { position: static; height: 72px; margin-top: 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 24px; }
     .icons { padding: 0; gap: 20px 8px; }
     .hint { order: -1; }
   }

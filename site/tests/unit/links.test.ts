@@ -14,3 +14,10 @@ describe('contact links', () => {
     expect(mailLink('agalal819@gmail.com', 'App project')).toBe('mailto:agalal819@gmail.com?subject=App%20project');
   });
 });
+
+import { telLink } from '../../src/lib/links';
+describe('tel links', () => {
+  it('builds a tel: link with + and digits only', () => {
+    expect(telLink('+20 111 936 9127')).toBe('tel:+201119369127');
+  });
+});

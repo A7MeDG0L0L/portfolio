@@ -13,6 +13,8 @@ export const profileSchema = z.object({
   availabilityText: z.string(),
   email: z.email(),
   whatsapp: z.string().regex(/^\+\d{8,15}$/),
+  phone: z.string().regex(/^\+\d{8,15}$/),
+  phoneAlt: z.string().regex(/^\+\d{8,15}$/).optional(),
   linkedin: z.url(),
   github: z.url(),
   ctaHire: z.string(),

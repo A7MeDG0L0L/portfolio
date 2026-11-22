@@ -5,3 +5,7 @@ export function waLink(number: string, message: string): string {
 export function mailLink(email: string, subject: string): string {
   return `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 }
+
+export function telLink(number: string): string {
+  return `tel:+${number.replace(/\D/g, '')}`;
+}

@@ -49,3 +49,20 @@ test('tile expands', async ({ page }) => {
   await tile.click();
   await expect(tile).not.toHaveClass(/big/);
 });
+
+test('contact lists both phone numbers as call links', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#contact a[href="tel:+201119369127"]')).toHaveCount(1);
+  await expect(page.locator('#contact a[href="tel:+201111199742"]')).toHaveCount(1);
+});
+
+test('mobile: third quick look stat spans the full row', async ({ page }, info) => {
+  test.skip(info.project.name !== 'mobile', 'mobile layout only');
+  await page.setViewportSize({ width: 360, height: 780 });
+  await page.goto('/');
+  const [grid, third] = await Promise.all([
+    page.locator('#quick-look .bento').boundingBox(),
+    page.locator('#quick-look .stat').nth(2).boundingBox(),
+  ]);
+  expect(Math.round(third!.width)).toBe(Math.round(grid!.width));
+});
