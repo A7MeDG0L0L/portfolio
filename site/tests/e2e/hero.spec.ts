@@ -72,3 +72,23 @@ test('mobile: page behind the sheet does not scroll', async ({ page }, info) => 
   await page.waitForTimeout(300);
   expect(await page.evaluate(() => window.scrollY)).toBe(before);
 });
+
+for (const width of [881, 700, 600]) {
+  test(`phone frame is shown at tablet width ${width}px`, async ({ page }, info) => {
+    test.skip(info.project.name !== 'desktop', 'viewport set explicitly');
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    const box = await page.getByTestId('hero').locator('.phone').boundingBox();
+    expect(box?.width).toBe(310);
+    expect(box?.height).toBe(630);
+  });
+}
+
+test('phone frame is hidden on a real phone (icons only)', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'viewport set explicitly');
+  await page.setViewportSize({ width: 412, height: 900 });
+  await page.goto('/');
+  const box = await page.getByTestId('hero').locator('.phone').boundingBox();
+  expect(box?.height).not.toBe(630);
+  await expect(page.getByTestId('hero').getByTestId('app-icon')).toHaveCount(8);
+});
