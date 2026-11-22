@@ -54,12 +54,15 @@ describe('English content', () => {
     expect(experience.roles.find((r) => r.company === 'The Sparks Foundation')?.inTimeline).toBe(false);
   });
 
-  it('13 projects with the right types', () => {
+  it('16 projects with the right types', () => {
     expect(projects.map((p) => p.slug)).toEqual([
       'bluworks',
       'bluworks-tablet',
       'shop-and-ship',
       'aramex-mobile',
+      'aramex-freight',
+      'aramex-global-shopper',
+      'myus',
       'khosomat',
       'convertify',
       'xo-clash',
@@ -74,7 +77,7 @@ describe('English content', () => {
     expect(types['simple-file-manager']).toBe('package');
     expect(types['flutter-pdf-designer']).toBe('package');
     expect(types['ai-dev']).toBe('approach');
-    expect(projects.filter((p) => p.type === 'app')).toHaveLength(10);
+    expect(projects.filter((p) => p.type === 'app')).toHaveLength(13);
     expect(projects.every((p) => p.locale === 'en')).toBe(true);
   });
 
@@ -143,14 +146,14 @@ describe('artwork', () => {
     for (const src of imgs) expect(fs.existsSync(path.join(pub, src)), src).toBe(true);
   });
   it('published apps use their real store icon', () => {
-    for (const slug of ['bluworks', 'aramex-mobile', 'shop-and-ship', 'bluworks-tablet', 'khosomat', 'convertify', 'xo-clash', 'daily-tips', 'nasa-daily', 'made-me-laugh']) {
+    for (const slug of ['bluworks', 'aramex-mobile', 'aramex-freight', 'aramex-global-shopper', 'myus', 'shop-and-ship', 'bluworks-tablet', 'khosomat', 'convertify', 'xo-clash', 'daily-tips', 'nasa-daily', 'made-me-laugh']) {
       expect(projects.find((p) => p.slug === slug)?.icon.image, slug).toBe(`/icons/${slug}.png`);
     }
   });
 });
 
 describe('phone selection', () => {
-  it('only Made Me Laugh is hidden from the phone', () => {
-    expect(projects.filter((p) => !p.inPhone).map((p) => p.slug)).toEqual(['made-me-laugh']);
+  it('phone hides the extra Aramex apps and Made Me Laugh', () => {
+    expect(projects.filter((p) => !p.inPhone).map((p) => p.slug)).toEqual(['aramex-freight', 'aramex-global-shopper', 'myus', 'made-me-laugh']);
   });
 });

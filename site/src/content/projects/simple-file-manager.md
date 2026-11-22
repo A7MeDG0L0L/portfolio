@@ -4,7 +4,7 @@ short: "Files"
 slug: simple-file-manager
 type: package
 dates: Flutter package
-order: 11
+order: 14
 icon: { label: "▤", bg: "#3ddc97", fg: "#063d25" }
 summary: A Flutter package for file management, on pub.dev.
 highlights:

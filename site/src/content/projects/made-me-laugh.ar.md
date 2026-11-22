@@ -4,7 +4,7 @@ short: "نكت"
 slug: made-me-laugh
 type: app
 dates: مشروع جانبي
-order: 10
+order: 13
 inPhone: false
 icon: { label: "ha", bg: "#ffd23f", fg: "#222222", image: "/icons/made-me-laugh.png" }
 summary: تطبيق لمشاركة النكت مع Firestore وإشعارات وصوت.

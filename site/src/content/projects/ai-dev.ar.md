@@ -4,7 +4,7 @@ short: "AI"
 slug: ai-dev
 type: approach
 dates: طريقة عملي
-order: 13
+order: 16
 icon: { label: "AI", bg: "linear-gradient(135deg,#7c5cff,#54c5f8)" }
 summary: كيف أستخدم الذكاء الاصطناعي لأسلّم أسرع دون التنازل عن الجودة.
 highlights:

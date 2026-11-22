@@ -4,7 +4,7 @@ short: "Tips"
 slug: daily-tips
 type: app
 dates: Side project
-order: 8
+order: 11
 icon: { label: "💡", bg: "#4a7bd0", image: "/icons/daily-tips.png" }
 summary: 50+ lifestyle tips for better living, with favorites and sharing.
 highlights:

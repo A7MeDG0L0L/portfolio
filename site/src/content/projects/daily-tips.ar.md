@@ -4,7 +4,7 @@ short: "نصائح"
 slug: daily-tips
 type: app
 dates: مشروع جانبي
-order: 8
+order: 11
 icon: { label: "💡", bg: "#4a7bd0", image: "/icons/daily-tips.png" }
 summary: أكثر من 50 نصيحة لحياة أفضل، مع المفضلة والمشاركة.
 highlights:
