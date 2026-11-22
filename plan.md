@@ -1,6 +1,6 @@
 # Plan — Ahmed Galal Portfolio
 
-**Owner:** Product Manager · **Gate 1 approved:** ☐ (awaiting CEO)
+**Owner:** Product Manager · **Gate 1 approved:** ☑ 2026-11-22 (CEO: "Approved, Native")
 **Spec:** `docs/superpowers/specs/2026-11-22-portfolio-design.md` (approved by CEO 2026-11-22)
 **Detailed task plan:** `docs/superpowers/plans/2026-11-22-portfolio-site.md`
 

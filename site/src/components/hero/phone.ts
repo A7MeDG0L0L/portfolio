@@ -1,3 +1,4 @@
+export {}; // module scope: keeps `opener` from clashing with window.opener
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 let openSheet: HTMLElement | null = null;

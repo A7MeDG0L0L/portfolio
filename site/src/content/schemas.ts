@@ -11,10 +11,10 @@ export const profileSchema = z.object({
   intro: z.string(),
   available: z.boolean(),
   availabilityText: z.string(),
-  email: z.string().email(),
+  email: z.email(),
   whatsapp: z.string().regex(/^\+\d{8,15}$/),
-  linkedin: z.string().url(),
-  github: z.string().url(),
+  linkedin: z.url(),
+  github: z.url(),
   ctaHire: z.string(),
   ctaHireHint: z.string(),
   ctaBuild: z.string(),
@@ -52,11 +52,11 @@ export const projectSchema = z.object({
   stack: z.array(z.string()),
   links: z
     .object({
-      play: z.string().url().optional(),
-      appStore: z.string().url().optional(),
-      github: z.string().url().optional(),
-      pubdev: z.string().url().optional(),
-      web: z.string().url().optional(),
+      play: z.url().optional(),
+      appStore: z.url().optional(),
+      github: z.url().optional(),
+      pubdev: z.url().optional(),
+      web: z.url().optional(),
     })
     .default({}),
   metrics: z.array(z.object({ value: z.string(), label: z.string(), confirmedBy: z.literal('ahmed') })).default([]),
@@ -73,7 +73,7 @@ export const experienceSchema = z.object({
       end: z.string().regex(/^\d{4}-\d{2}$/).nullable(),
       bullets: z.array(z.string()),
       inTimeline: z.boolean(),
-      url: z.string().url().optional(),
+      url: z.url().optional(),
     }),
   ),
 });
@@ -90,7 +90,7 @@ export const certificationsSchema = z.object({
       start: z.string(),
       end: z.string(),
       description: z.string(),
-      url: z.string().url().optional(),
+      url: z.url().optional(),
     }),
   ),
 });
